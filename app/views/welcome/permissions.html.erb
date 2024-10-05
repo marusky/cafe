@@ -1,0 +1,4 @@
+<div data-controller="push" data-push-vapid-public-key-value="<%= ENV['VAPID_PUBLIC_KEY'].delete("=") %>">
+  Potrebujeme od teba nejake tie povolenia:
+  <button data-action="push#requestPermission">Prijimat upozornenia</button><br/>
+</div>
