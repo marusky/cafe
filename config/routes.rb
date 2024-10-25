@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   get "welcome/download"
   get "welcome/customer"
   get "welcome/permissions"
+
+  get 'app', to: 'pages#app'
+
   resources :products
   resources :categories
   resources :customers, only: [:create]

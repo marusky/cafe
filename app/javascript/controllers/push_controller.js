@@ -1,12 +1,26 @@
 import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="push"
-export default class extends Controller {
+export default class PushController extends Controller {
   static values = {
     vapidPublicKey: String
   }
 
   async connect() {
+  }
+
+  async handleToggle (e) {
+    const state = e.target.dataset.state
+
+    if (state === 'checked') {
+      const permissionResult = await this.requestPermission()
+
+      switch (permissionResult) {
+        case "default":
+          e.target.click();
+          break;
+      }
+    }
   }
 
   async requestPermission() {
@@ -22,7 +36,9 @@ export default class extends Controller {
       case "default":
         console.log('You need this to use the app.')
         break;
-    }
+      }
+
+    return result
   }
   
   async getSubscription() {

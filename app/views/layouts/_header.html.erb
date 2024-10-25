@@ -1,0 +1,13 @@
+<header class='fixed top-0 left-0 right-0'>
+  <div class='text-lg border-b border-gray-200 grid grid-cols-3 grid-rows-1 items-center px-4 pt-2 pb-4 backdrop-blur bg-gradient-to-b from-white via-white-70 to-white/0'>
+    <div>
+      <%= yield :back %>
+    </div>
+    <h1 class="text-4xl tracking-tighter font-semibold">
+      kaféem
+    </h1>
+    <div class='flex justify-end'>
+      <%= render_button 'Dobiť', class: 'text-sm py-2 px-4' %>
+    </div>
+  </div>
+</header>

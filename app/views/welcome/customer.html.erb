@@ -1,12 +1,28 @@
-Ako ťa máme volať?
+<main class='container mx-auto px-8'>
+<div class='flex flex-col text-lg text-center justify-center min-h-screen'>
+  <span class='text-5xl'>🤝</span>
+  <h1 class='mt-6 text-center text-4xl font-semibold tracking-tighter relative'>Je nám cťou!</h1>
+  <p class='mt-12'>
+    Inštrumentál singuláru záludných slov máme zvládnutý, no tvoje meno
+    zatiaľ vyskloňovať nevieme.
+  </p>
+  <p class='mt-4'>
+    Ako ťa máme volať?
+  </p>
+  <%= form_with model: @customer, class: 'mt-6' do |form| %>
+    <div class="my-4">
+      <%= form.text_field :name, placeholder: 'Meno', class: "text-center placeholder-gray-300 block rounded-md border border-gray-200 px-3 py-2 mt-2 w-full" %>
+      <% if @customer.errors[:name].any? %>
+        <div class='text-sm mt-2 text-red-400'>
+          Eh.. prepáč, tvoje meno je?
+        </div>
+      <% end %>
+    </div>
+    <%= form.submit 'Tak ma volajte', class: 'w-full text-white bg-black py-2 rounded-lg' %>
+  <% end %>
 
-<%= form_with model: @customer do |form| %>
-  <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
-    <% if @customer.errors.any? %>
-      meno poprosim 
-    <% end %>
+  <div class='mt-10 text-sm text-gray-400'>
+    Kliknutím na "Tak ma volajte" prehlasuješ, že si tvoje meno môžeme pamätať a používať za účelom fungovania kaféem appky.
   </div>
-  <%= form.submit 'Tak ma volajte' %>
-<% end %>
+</div>
+</main>

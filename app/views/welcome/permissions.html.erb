@@ -1,4 +1,23 @@
-<div data-controller="push" data-push-vapid-public-key-value="<%= ENV['VAPID_PUBLIC_KEY'].delete("=") %>">
-  Potrebujeme od teba nejake tie povolenia:
-  <button data-action="push#requestPermission">Prijimat upozornenia</button><br/>
-</div>
+<main class='container mx-auto px-8'>
+  <div class='flex flex-col text-lg text-center justify-center items-center min-h-screen' data-controller="push" data-push-vapid-public-key-value="<%= ENV['VAPID_PUBLIC_KEY'].delete("=") %>">
+    <span class='text-5xl'>👮🏻‍♂️</span>
+    <h1 class='mt-6 text-center text-4xl font-semibold tracking-tighter relative'>PO-VO-LE-NIA</h1>
+    <p class='mt-8'>
+      Keď bude tvoja objednávka hotová,
+      pošleme ti upozornenie. <br />
+      Kameru využiješ pri dobíjaní
+      e-žetónov a polohu, aby si si
+      neobjednával toasty z ubytka.
+    </p>
+    <p class='mt-4'>
+      Nič z toho nezneužijeme. <br />
+      Čestné prezidentské.
+    </p>
+
+    <section class='w-full mt-16 px-8'>
+      <%= render_switch 'Upozornenia', id: "ruby_on_rails", name: "language", action_on_toggle: 'push#handleToggle' %>
+    </section>
+
+    <%= link_to 'Hotovo', app_path, class: 'mt-12 w-full text-white bg-black py-2 rounded-lg' %>
+  </div>
+</main>
