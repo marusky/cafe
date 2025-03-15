@@ -1,21 +1,23 @@
-<div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+<% content_for :title, 'Kategórie' %>
+<% content_for :action do %>
+  <%= link_to new_category_path, class: 'inline-block ml-4 text-xl transition text-sky-500 hover:text-sky-200' do %>
+    <%= icon('fa-solid', 'plus') %>
   <% end %>
+<% end %>
 
-  <% content_for :title, "Categories" %>
+<% if @categories.none? %>
+  <%= link_to new_category_path do %>
+    <div class='p-4 text-zinc-500 border border-dashed border-zinc-600 rounded-xl text-center'>
+      Zatiaľ tu žiadna kategória nie je. 
+      <br />
+      Klikni sem, aby si pridal prvú.
+    </div>
+  <% end %>
+<% end %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Categories</h1>
-    <%= link_to "New category", new_category_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
 
-  <div id="categories" class="min-w-full">
-    <% @categories.each do |category| %>
-      <%= render category %>
-      <p>
-        <%= link_to "Show this category", category, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      </p>
-    <% end %>
-  </div>
+<div id="categories" class='space-y-4'>
+  <% @categories.each do |category| %>
+    <%= render category %>
+  <% end %>
 </div>

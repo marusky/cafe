@@ -1,15 +1,41 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
+<% content_for :back do %>
+  <%= link_to @product.category, class: 'text-sky-500' do %>
+    &lt; Späť
+  <% end %>
+<% end %>
+<% content_for :title, @product.title %>
+<% content_for :action do %>
+  <%= link_to edit_product_path(@product), class: 'text-xl transition text-sky-500 hover:text-sky-200' do %>
+    <%= icon('fa-solid', 'pen-to-square') %>
+  <% end %>
+<% end %>
 
-    <%= render @product %>
-
-    <%= link_to "Edit this product", edit_product_path(@product), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Back to products", products_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to "Destroy this product", @product, method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+<div class='text-lg'>
+  <div class='pb-4 flex justify-between items-center'>
+    <div class='font-semibold'>
+      Je produkt dostupný?
+    </div>
+    <div>
+      <%= render_switch '', id: "ruby_on_rails", name: "language", action_on_toggle: '' %>
+    </div>
+  </div>
+  <div class='bg-zinc-200/80 h-0.5 w-full rounded-lg'></div>
+  <div class='py-4'>
+    <div class='font-semibold'>
+      Cena
+    </div>
+    <div>
+      <%= @product.price %> žetónov
+    </div>
+  </div>
+  <div class='py-4'>
+    <div class='font-semibold'>
+      Fotografia
+    </div>
+    <div class='mt-1 rounded-lg overflow-hidden'>
+      <% if @product.image.attached? %>  
+        <%= image_tag @product.image %>
+      <% end %>
     </div>
   </div>
 </div>

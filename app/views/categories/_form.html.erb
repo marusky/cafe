@@ -1,7 +1,7 @@
-<%= form_with(model: category, class: "contents") do |form| %>
+<%= form_with(model: category, class: "contents") do |f| %>
   <% if category.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+    <div id="error_explanation" class="bg-red-200/15  text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2>Kategóriu sa nepodarilo uložiť:</h2>
 
       <ul>
         <% category.errors.each do |error| %>
@@ -11,12 +11,10 @@
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  <div>
+    <%= f.label :title, 'Názov', class: 'block text-zinc-900 font-medium' %>
+    <%= f.text_field :title, class: 'rounded-lg mt-2 bg-zinc-100 border border-zinc-300 px-5 py-2.5 w-full focus:ring-0 focus:border-blue-300 focus:bg-zinc-50 transition duration-150' %>
   </div>
 
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-  </div>
+  <%= f.submit 'Uložiť', class: 'mt-8 w-full text-center py-4 rounded-xl bg-blue-500 cursor-pointer hover:bg-blue-400 text-zinc-50 font-semibold transition' %>
 <% end %>

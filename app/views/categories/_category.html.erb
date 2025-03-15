@@ -1,7 +1,5 @@
-<div id="<%= dom_id category %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= category.name %>
-  </p>
-
-</div>
+<%= link_to category, class: 'px-4 py-3 bg-zinc-100 border border-zinc-200 rounded-xl flex justify-between items-center' do %>
+  <h3 class='text-xl'>
+    <%= category.title %>
+  </h3>
+<% end %>

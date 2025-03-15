@@ -1,8 +1,14 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing product</h1>
+<% content_for :title, 'Úprava produktu' %>
+<% content_for :back do %>
+  <%= link_to @product, class: 'text-sky-500' do %>
+    &lt; Späť
+  <% end %>
+<% end %>
+<% content_for :action do %>
+  <%= button_to @product, method: :delete, data: { turbo_confirm: "Naozaj chceš odstrániť tento produkt?\nTáto operácia je nevratná." }, class: 'text-xl transition text-rose-500 hover:text-rose-200' do %>
+    <%= icon('fa-solid', 'trash') %>
+  <% end %>
+<% end %>
 
-  <%= render "form", product: @product %>
 
-  <%= link_to "Show this product", @product, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to products", products_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-</div>
+<%= render 'form', product: @product %>
