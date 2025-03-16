@@ -1,23 +1,31 @@
 Rails.application.routes.draw do
+  resource :session, only: [:create, :destroy]
+  get "admin", to: "sessions#new"
+  resources :passwords, param: :token
   get "welcome/download"
   get "welcome/customer"
   get "welcome/permissions"
 
   get "app", to: "pages#app"
 
-  resources :products, except: :index do
-    member do 
-      put "availability", to: "products#toggle_availability"
+  scope module: :admin do
+    resources :categories
+    resources :products, except: :index do
+      member do
+        put "availability", to: "products#toggle_availability"
+      end
     end
+
+    resource :balance, only: :show do
+      get ":cid/add-tokens", to: "balances#add_tokens", as: :add_tokens
+      put ":cid/update", to: "balances#update", as: :update_customer
+    end
+
+    get "account", to: "pages#account"
   end
-  resources :categories
+
   resources :customers, only: [:create]
   post "push_subscriptions", to: "push_subscriptions#create"
-
-  resource :balance, only: :show do
-    get ":cid/add-tokens", to: "balances#add_tokens", as: :add_tokens
-    put ":cid/update", to: "balances#update", as: :update_customer
-  end
 
   get "up" => "rails/health#show", :as => :rails_health_check
 

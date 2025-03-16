@@ -1,0 +1,6 @@
+<% content_for :title, 'Účet' %>
+<% content_for :action do %>
+  <%= button_to session_path, method: :delete, class: 'inline-block ml-4 text-xl transition text-rose-500 hover:text-rose-200' do %>
+    <%= icon('fa-solid', 'right-from-bracket') %>
+  <% end %>
+<% end %>

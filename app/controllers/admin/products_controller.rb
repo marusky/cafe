@@ -1,4 +1,4 @@
-class ProductsController < ApplicationController
+class Admin::ProductsController < AdminController
   before_action :set_product, only: %i[ show edit update destroy toggle_availability ]
 
   def show

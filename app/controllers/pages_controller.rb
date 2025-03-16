@@ -3,9 +3,9 @@ class PagesController < ApplicationController
   end
 
   def app
-    redirect_to_welcome if current_customer.nil?
+    return redirect_to_welcome if current_customer.nil?
 
-    render layout: 'app'
+    # render layout: 'app'
   end
 
   private
