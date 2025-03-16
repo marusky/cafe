@@ -5,7 +5,11 @@ Rails.application.routes.draw do
 
   get "app", to: "pages#app"
 
-  resources :products, except: :index
+  resources :products, except: :index do
+    member do 
+      put "availability", to: "products#toggle_availability"
+    end
+  end
   resources :categories
   resources :customers, only: [:create]
   post "push_subscriptions", to: "push_subscriptions#create"

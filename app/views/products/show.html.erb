@@ -15,8 +15,8 @@
     <div class='font-semibold'>
       Je produkt dostupný?
     </div>
-    <div>
-      <%= render_switch '', id: "ruby_on_rails", name: "language", action_on_toggle: '' %>
+    <div id='availability-switch' data-controller='product-availability'>
+      <%= render_switch '', id: 'available', name: 'available', checked: @product.is_available, action_on_toggle: 'product-availability#toggle' %>
     </div>
   </div>
   <div class='bg-zinc-200/80 h-0.5 w-full rounded-lg'></div>

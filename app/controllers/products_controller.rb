@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[ show edit update destroy ]
+  before_action :set_product, only: %i[ show edit update destroy toggle_availability ]
 
   def show
   end
@@ -27,6 +27,11 @@ class ProductsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def toggle_availability
+    availability_params = params.expect(product: [:is_available])
+    @product.update(availability_params)
   end
 
   def destroy

@@ -1,0 +1,5 @@
+<%= turbo_stream.replace 'availability-switch' do %>
+  <div id='availability-switch' data-controller='product-availability'>
+    <%= render_switch '', id: 'available', name: 'available', checked: @product.is_available, action_on_toggle: 'product-availability#toggle' %>
+  </div>
+<% end %>

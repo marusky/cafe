@@ -13,6 +13,16 @@
   <% end %>
 <% end %>
 
+<% if @category.products.none? %>
+  <%= link_to new_product_path(category_id: @category.id) do %>
+    <div class='p-4 text-zinc-500 border border-dashed border-zinc-600 rounded-xl text-center'>
+      V tejto kategórii zatiaľ nie je žiadny produkt.
+      <br />
+      Klikni sem, aby si pridal prvý.
+    </div>
+  <% end %>
+<% end %>
+
 <div>
   <%= render partial: 'products/product', collection: @category.products %>
 </div>
