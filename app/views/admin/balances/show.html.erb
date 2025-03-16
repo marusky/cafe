@@ -1,9 +1,18 @@
 <% content_for :title, 'Žetóny' %>
 
-<div id="hi">HELOU</div>
-<div id="qr-scanner" data-controller='camera'>
-  <button data-action='camera#testy'>REMOVE</button>
+
+<div id='hi' id="qr-scanner" data-controller='camera'>
   <video data-camera-target='video' hidden></video>
-  <canvas data-camera-target="canvas" style="width: 300px; height: 300px;" hidden></canvas>
-  <p data-camera-target='code'></p>
+  <div class='flex justify-center relative'>
+    <div class='z-10 absolute inset-0 flex justify-center items-center'>
+      <%# TODO: add some nice QR here, too %>
+      <%# <%= icon 'fa-solid', 'qrcode', class: 'text-[15rem] text-zinc-100/50 animate-pulse' %>
+    </div>
+    <canvas data-camera-target="canvas" hidden class="rounded-xl w-[300px] h-[300px]"></canvas>
+  </div>
+
+  <div class='mt-4 text-center text-zinc-400'>
+    Pre pridanie žetónov umiestni QR kód účastníka do stredu kamery.
+  </div>
 </div>
+

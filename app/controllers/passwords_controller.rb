@@ -10,7 +10,7 @@ class PasswordsController < ApplicationController
       PasswordsMailer.reset(admin).deliver_later
     end
 
-    redirect_to new_session_url, notice: "Password reset instructions sent (if admin with that email address exists)."
+    redirect_to admin_url, notice: "Password reset instructions sent (if admin with that email address exists)."
   end
 
   def edit
@@ -18,7 +18,7 @@ class PasswordsController < ApplicationController
 
   def update
     if @admin.update(params.permit(:password, :password_confirmation))
-      redirect_to new_session_url, notice: "Password has been reset."
+      redirect_to admin_url, notice: "Password has been reset."
     else
       redirect_to edit_password_url(params[:token]), alert: "Passwords did not match."
     end

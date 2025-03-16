@@ -1,7 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import jsQR from 'jsqr'
 
-// Connects to data-controller="camera"
 export default class extends Controller {
   static targets = ["video", "code", "canvas"]
 
@@ -9,12 +8,12 @@ export default class extends Controller {
     this.startCamera()
   }
 
-  openTokensModal(cid) {
-    fetch(`/balance/${cid}/add-tokens`, {
+  openTokensModal(cid, eur) {
+    fetch(`/balance/${cid}/add-tokens?eur=${eur}`, {
       method: "GET",
       headers: {
         Accept: "text/vnd.turbo-stream.html"
-      }
+      },
     })
       .then(r => r.text())
       .then(html => Turbo.renderStreamMessage(html))
@@ -24,8 +23,8 @@ export default class extends Controller {
     const constraints = {
       audio: false,
       video: {
-        width: 300,
-        height: 300,
+        width: 1000,
+        height: 1000,
         facingMode: 'environment',
       },
     };
@@ -67,8 +66,9 @@ export default class extends Controller {
       if (code) {
         const parsedUrl = new URL(code.data);
         const cid = parsedUrl.searchParams.get("cid");
+        const eur = parsedUrl.searchParams.get("eur");
         
-        this.openTokensModal(cid)
+        this.openTokensModal(cid, eur)
       } else {
         requestAnimationFrame(this.tick.bind(this));
       }

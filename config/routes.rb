@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resource :session, only: [:create, :destroy]
-  get "admin", to: "sessions#new"
+  get "admin", to: "pages#admin"
   resources :passwords, param: :token
   get "welcome/download"
   get "welcome/customer"

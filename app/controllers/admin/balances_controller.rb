@@ -11,5 +11,7 @@ class Admin::BalancesController < AdminController
 
   def add_tokens
     @customer = Customer.find(params[:cid])
+    @eur = params[:eur].to_i
+    @tokens = @eur * 4
   end
 end

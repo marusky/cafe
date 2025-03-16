@@ -73,4 +73,5 @@ Rails.application.configure do
   # config.generators.apply_rubocop_autocorrect_after_generate!
 
   config.hosts << "winning-sole-commonly.ngrok-free.app"
+  config.hosts << "slightly-arriving-walleye.ngrok-free.app"
 end
