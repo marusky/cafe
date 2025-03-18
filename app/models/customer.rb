@@ -5,4 +5,5 @@ class Customer < ApplicationRecord
   validates :name, presence: true
 
   has_one :push_subscription, dependent: :delete
+  has_many :orders
 end

@@ -1,2 +1,28 @@
-<%= link_to 'Reload', request.path%>
-<%= link_to 'admin', admin_path %>
+<% content_for :title, 'kaféem' %>
+<% content_for :action do %>
+  <%= link_to '#', class: 'text-xl transition text-zinc-700 hover:text-zinc-400' do %>
+    <%= icon 'fa-solid', 'coins', class: 'ml-2' %>
+  <% end %>
+<% end %>
+
+<div id='order-item-modal'>
+</div>
+
+<div data-controller='order-item-modal'>
+  <% @categories.each do |category| %>
+    <%= category.title %>
+    <div class='divide-y divide-zinc-200'>
+      <% category.products.each do |product| %>
+        <div class='cursor-pointer' data-action='click->order-item-modal#newOrder' data-product-id='<%= product.id %>'>
+          <%= render 'admin/products/product', product: product %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<% if @order %>
+  <%= link_to @order, class: 'text-lg font-medium text-green-50 text-center fixed bottom-12 left-4 right-4 shadow-md px-5 py-4 rounded-xl bg-green-500 hover:bg-green-300 shadow-green-600/30' do %>
+    Zobraziť objednávku
+  <% end %>
+<% end %>

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  helper_method :current_customer
   # allow_browser versions: :modern
 
   def current_customer

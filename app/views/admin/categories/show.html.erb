@@ -24,5 +24,9 @@
 <% end %>
 
 <div class='divide-y divide-zinc-200'>
-  <%= render partial: 'admin/products/product', collection: @category.products %>
+  <% @category.products.each do |product| %>
+    <%= link_to product, class: 'block' do %>
+      <%= render 'admin/products/product', product: product %>
+    <% end %>
+  <% end %>
 </div>

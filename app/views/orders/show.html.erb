@@ -1,0 +1,10 @@
+<% content_for :title, "Objednávka ##{@order.id}" %>
+<% content_for :back do %>
+  <%= link_to app_path, class: 'text-sky-500' do %>
+    &lt; Späť
+  <% end %>
+<% end %>
+
+<div id='order'>
+  <%= render "orders/states/#{@order.state}" %>
+</div>

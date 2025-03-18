@@ -8,6 +8,13 @@ Rails.application.routes.draw do
 
   get "app", to: "pages#app"
 
+  resources :order_items, only: [:new, :create, :update]
+  resources :orders, only: [:show, :edit, :update] do
+    member do
+      patch "finalize", to: "orders#finalize"
+    end
+  end
+
   scope module: :admin do
     resources :categories
     resources :products, except: :index do

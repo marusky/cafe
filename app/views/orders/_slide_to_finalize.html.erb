@@ -1,0 +1,25 @@
+<div data-controller="slide-to-finalize" data-slide-to-finalize-order-id-value="<%= order_id %>" class="relative w-full">
+  <!-- Background Track -->
+  <div class="h-16 bg-zinc-200 backdrop-blur-lg rounded-full shadow-[inset_5px_1px_12px_rgba(200,200,200,0.9)]">
+    <div class="rounded-full overflow-hidden absolute inset-0 flex items-center justify-start">
+      <div class="h-full bg-gradient-to-r from-green-500 to-teal-500 transition-all duration-300 ease-out rounded-full" 
+            data-slide-to-finalize-target="progress" 
+            style="width: 0%">
+      </div>
+    </div>
+  </div>
+  
+  <!-- Slider Knob -->
+  <div class="z-10 absolute top-0 h-16 w-16 bg-white rounded-full shadow-lg flex items-center justify-center cursor-pointer transform transition-transform duration-300 ease-out"
+        data-slide-to-finalize-target="knob"
+        data-action="mousedown->slide-to-finalize#startDrag touchstart->slide-to-finalize#startDrag">
+    <svg class="w-6 h-6 text-gray-600 bg-white rounded-full" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" color="black"/>
+    </svg>
+  </div>
+
+  <!-- Text Overlay -->
+  <div class="absolute inset-0 left-10 flex items-center justify-center bg-gradient-to-r text-zinc-500 animate-pulse text-lg pointer-events-none">
+    <span class='transition duration-150' data-slide-to-finalize-target="text">potiahni pre objednanie</span>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class='py-4 first:pt-0 flex justify-between items-center' data-controller='order-item'>
+  <div class='flex gap-4'>
+    <div class='w-14 h-14 rounded-lg overflow-hidden'>
+      <%= image_tag order_item.product.image.variant(:thumbnail) %>
+    </div>
+    <div>
+      <div class='text-lg font-medium'><%= order_item.product.title %></div>
+      <div class='text-zinc-600' data-order-item-target='sum' data-price='<%= order_item.product.price %>'><%= humanized_price order_item.total %></div>
+    </div>
+  </div>
+  <div class='flex items-center border border-zinc-300 rounded-xl text-xl h-12'>
+    <div class='pl-4 pr-2' data-action='click->order-item#minus'>
+      -
+    </div>
+    <div>
+      <%= f.number_field 'order_items[amount]', value: order_item.amount, class: 'w-12 bg-zinc-50 border-none text-center', data: { order_item_target: 'amount', order_item_id: order_item.id } %>
+    </div>
+    <div class='pl-2 pr-4' data-action='click->order-item#plus'>
+      +
+    </div>
+  </div>
+</div>

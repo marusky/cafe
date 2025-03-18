@@ -8,7 +8,9 @@ class PagesController < ApplicationController
   def app
     return redirect_to_welcome if current_customer.nil?
 
-    # render layout: 'app'
+    @categories = Category.order(:title).includes(:products)
+    @order = current_customer.orders.open.first
+    render layout: "app"
   end
 
   private

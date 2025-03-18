@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_16_090119) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_17_165552) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -57,6 +57,21 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_16_090119) do
 #   Unknown type 'uuid' for column 'id'
 
 
+  create_table "order_items", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "order_id", null: false
+    t.integer "cost", default: 0, null: false
+    t.integer "amount", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_id"], name: "index_order_items_on_product_id"
+  end
+
+# Could not dump table "orders" because of following StandardError
+#   Unknown type 'uuid' for column 'customer_id'
+
+
   create_table "products", force: :cascade do |t|
     t.string "title"
     t.integer "price", default: 0, null: false
@@ -82,6 +97,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_16_090119) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "products"
+  add_foreign_key "orders", "customers"
   add_foreign_key "products", "categories"
   add_foreign_key "push_subscriptions", "customers"
   add_foreign_key "sessions", "admins"
