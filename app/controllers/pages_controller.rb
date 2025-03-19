@@ -9,7 +9,7 @@ class PagesController < ApplicationController
     return redirect_to_welcome if current_customer.nil?
 
     @categories = Category.order(:title).includes(:products)
-    @order = current_customer.orders.first
+    @order = current_customer.orders.where(state: [:open, :finalized, :received, :prepared]).first
     render layout: "app"
   end
 

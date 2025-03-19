@@ -8,5 +8,5 @@
 <%= turbo_stream_from :order %>
 
 <div id='<%= dom_id @order%>'>
-  <%= render "orders/states/#{@order.state}" %>
+  <%= render "orders/states/#{@order.state}", order: @order %>
 </div>

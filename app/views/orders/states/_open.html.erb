@@ -1,6 +1,6 @@
-<%= form_with model: @order do |f| %>
+<%= form_with model: order do |f| %>
   <div class='divide-y divide-zinc-200'>
-    <% @order.order_items.each do |order_item| %>
+    <% order.order_items.each do |order_item| %>
       <%= render order_item, f: %>
     <% end %>
   </div>

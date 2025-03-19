@@ -15,6 +15,11 @@ class Admin::OrdersController < AdminController
     return unless @order.received?
 
     @order.prepared!
+    PushService.send_notification(
+      push_subscription: @order.customer.push_subscription,
+      title: "Objednávka ##{@order.id} je hotová!", 
+      body: "Nezabudni na kód: #{@order.code}",
+    )
   end
 
   def deliver
