@@ -1,19 +1,26 @@
 <div class='fixed bottom-0 left-0 right-0 pt-2 pb-6 px-12 border-t border-zinc-200 flex justify-between items-center'>
-  <%= link_to categories_path, class: "flex flex-col justify-center items-center #{cafe_tab_active} transition hover:text-zinc-700 duration-150" do%>
-    <%= icon 'fa-solid', 'hotdog', class: 'text-xl' %>
+  <%= link_to admin_orders_path, class: "w-20 flex flex-col justify-center items-center #{orders_tab_active} transition hover:text-zinc-700 duration-150" do%>
+    <%= icon 'fa-solid', 'receipt', class: 'text-xl' %>
     <div class='text-sm'>
-      Café
+      Objednávky
     </div>
   <% end %>
 
-  <%= link_to balance_path, class: "flex flex-col justify-center items-center #{balance_tab_active} transition hover:text-zinc-700 duration-150" do%>
+  <%= link_to categories_path, class: "w-20 flex flex-col justify-center items-center #{cafe_tab_active} transition hover:text-zinc-700 duration-150" do%>
+    <%= icon 'fa-solid', 'hotdog', class: 'text-xl' %>
+    <div class='text-sm'>
+      Produkty
+    </div>
+  <% end %>
+
+  <%= link_to balance_path, class: "w-20 flex flex-col justify-center items-center #{balance_tab_active} transition hover:text-zinc-700 duration-150" do%>
     <%= icon 'fa-solid', 'coins', class: 'text-xl' %>
     <div class='text-sm'>
       Žetóny
     </div>
   <% end %>
 
-  <%= link_to account_path, class: "flex flex-col justify-center items-center #{account_tab_active} transition hover:text-zinc-700 duration-150" do%>
+  <%= link_to account_path, class: "w-20 flex flex-col justify-center items-center #{account_tab_active} transition hover:text-zinc-700 duration-150" do%>
     <%= icon 'fa-solid', 'bars', class: 'text-xl' %>
     <div class='text-sm'>
       Účet

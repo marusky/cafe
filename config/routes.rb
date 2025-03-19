@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :orders, only: [:show, :edit, :update] do
     member do
       patch "finalize", to: "orders#finalize"
+      patch "receive", to: "orders#receive"
+      patch "cancel", to: "orders#cancel"
     end
   end
 
@@ -29,6 +31,10 @@ Rails.application.routes.draw do
     end
 
     get "account", to: "pages#account"
+  end
+
+  namespace :admin do
+    resources :orders, only: :index
   end
 
   resources :customers, only: [:create]

@@ -13,7 +13,19 @@ class OrdersController < ApplicationController
   def finalize
     return unless @order.open?
 
-    @order.finalized!
+    @order.update!(state: :finalized, finalized_at: Time.current)
+  end
+
+  def receive
+    return unless @order.finalized?
+
+    @order.received!
+  end
+
+  def cancel
+    return if @order.open? || @order.delivered?
+
+    @order.cancelled!
   end
 
   private

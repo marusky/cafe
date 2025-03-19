@@ -1,0 +1,6 @@
+<% content_for :title, 'Objednávky' %>
+<div class='space-y-4'>
+  <% @orders.each do |order| %>
+    <%= render order %>
+  <% end %>
+</div>
