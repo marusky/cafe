@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "welcome/permissions"
 
   get "app", to: "pages#app"
+  get "tokens", to: "pages#tokens"
 
   resources :order_items, only: [:new, :create, :update]
   resources :orders, only: [:show, :edit, :update] do

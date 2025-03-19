@@ -6,3 +6,4 @@ pin "@hotwired/stimulus", to: "stimulus.min.js"
 pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
 pin_all_from "app/javascript/controllers", under: "controllers"
 pin "jsqr" # @1.4.0
+pin "qrcode", to: "https://ga.jspm.io/npm:qrcode@1.5.4/lib/browser.js"

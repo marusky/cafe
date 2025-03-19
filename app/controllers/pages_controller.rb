@@ -13,6 +13,10 @@ class PagesController < ApplicationController
     render layout: "app"
   end
 
+  def tokens
+    render layout: "app"
+  end
+
   private
 
   def redirect_to_welcome
