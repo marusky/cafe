@@ -5,6 +5,8 @@
   <% end %>
 <% end %>
 
-<div id='order'>
+<%= turbo_stream_from :order %>
+
+<div id='<%= dom_id @order%>'>
   <%= render "orders/states/#{@order.state}" %>
 </div>

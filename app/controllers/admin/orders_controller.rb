@@ -2,7 +2,7 @@ class Admin::OrdersController < AdminController
   before_action :set_order, except: :index
 
   def index
-    @orders = Order.order(:created_at)
+    @orders = Order.where.not(state: :open).order(:created_at)
   end
 
   def receive
