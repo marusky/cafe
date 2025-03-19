@@ -12,8 +12,6 @@ Rails.application.routes.draw do
   resources :orders, only: [:show, :edit, :update] do
     member do
       patch "finalize", to: "orders#finalize"
-      patch "receive", to: "orders#receive"
-      patch "cancel", to: "orders#cancel"
     end
   end
 
@@ -34,7 +32,14 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :orders, only: :index
+    resources :orders, only: :index do
+      member do
+        patch "receive", to: "orders#receive"
+        patch "prepare", to: "orders#prepare"
+        patch "deliver", to: "orders#deliver"
+        patch "cancel", to: "orders#cancel"
+      end
+    end
   end
 
   resources :customers, only: [:create]

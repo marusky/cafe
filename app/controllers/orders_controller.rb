@@ -16,18 +16,6 @@ class OrdersController < ApplicationController
     @order.update!(state: :finalized, finalized_at: Time.current)
   end
 
-  def receive
-    return unless @order.finalized?
-
-    @order.received!
-  end
-
-  def cancel
-    return if @order.open? || @order.delivered?
-
-    @order.cancelled!
-  end
-
   private
 
   def set_order
