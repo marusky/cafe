@@ -4,10 +4,8 @@ class Order < ApplicationRecord
 
   before_create :generate_code
 
-  after_update_commit -> { broadcast_replace_to :orders, partial: 'admin/orders/order' }
-  after_update_commit -> { broadcast_append_to :orders, partial: 'admin/orders/order' }, if: :finalized?
-
-  after_update_commit -> { broadcast_update_to :order, partial: "orders/states/#{state}" }, if: :customer_trackable?
+  after_update_commit :broadcast_changes_to_admins
+  after_update_commit :broadcast_changes_to_customer
 
   enum :state, {
     open: 0,
@@ -18,11 +16,28 @@ class Order < ApplicationRecord
     cancelled: 5
   }
 
+  private
+
+  def generate_code
+    self.code = ('0'..'9').to_a.shuffle.first(4).join('')
+  end
+
   def customer_trackable?
     finalized? || received? || prepared?
   end
 
-  def generate_code
-    self.code = ('0'..'9').to_a.shuffle.first(4).join('')
+  def broadcast_changes_to_customer
+    broadcast_update_to :order, partial: "orders/states/#{state}" if customer_trackable?
+  end
+
+  def broadcast_changes_to_admins
+    case state.to_sym
+    when :finalized
+      broadcast_append_to :orders, partial: 'admin/orders/order'
+    when :received, :prepared
+      broadcast_replace_to :orders, partial: 'admin/orders/order'
+    when :cancelled, :delivered
+      broadcast_remove_to :orders
+    end
   end
 end
