@@ -1,0 +1,22 @@
+<div class='z-30 bg-zinc-50/70 backdrop-blur-lg fixed bottom-0 left-0 right-0 pt-2 pb-6 border-t border-zinc-200 flex justify-evenly items-center'>
+  <%= link_to app_path, class: "w-20 flex flex-col justify-center items-center #{customer_cafe_tab_active} transition hover:text-zinc-700 duration-150" do%>
+    <%= icon 'fa-solid', 'hotdog', class: 'text-xl' %>
+    <div class='text-sm'>
+      Café
+    </div>
+  <% end %>
+
+  <%= link_to tokens_path, class: "w-20 flex flex-col justify-center items-center #{tokens_tab_active} transition hover:text-zinc-700 duration-150" do%>
+    <%= icon 'fa-solid', 'coins', class: 'text-xl' %>
+    <div class='text-sm'>
+      Žetóny
+    </div>
+  <% end %>
+
+    <%= link_to admin_orders_path, class: "w-20 flex flex-col justify-center items-center #{orders_tab_active} transition hover:text-zinc-700 duration-150" do%>
+      <%= icon 'fa-solid', 'receipt', class: 'text-xl' %>
+      <div class='text-sm'>
+        Objednávky
+      </div>
+    <% end %>
+</div>

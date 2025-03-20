@@ -16,6 +16,20 @@ class Order < ApplicationRecord
     cancelled: 5
   }
 
+  def available_order_items
+    order_items
+      .joins(:product)
+      .where(product: { is_available: true })
+      .order(:created_at)
+  end
+
+  def unavailable_order_items
+    order_items
+      .joins(:product)
+      .where(product: { is_available: false })
+      .order(:created_at)
+  end
+
   private
 
   def generate_code

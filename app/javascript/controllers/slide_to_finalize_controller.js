@@ -69,12 +69,20 @@ export default class extends Controller {
     fetch(`${location.origin}/orders/${this.orderIdValue}/finalize`, {
       method: "PATCH",
       headers: {
-        Accept: "text/vnd.turbo-stream.html",
+        Accept: "text/vnd.turbo-stream.html, text/html",
         "Content-Type": "application/json",
         "X-CSRF-Token": csrfToken,
       },
     })
-    .then(r => r.text())
-    .then(html => Turbo.renderStreamMessage(html))
+    .then(response => {
+      const contentType = response.headers.get("Content-Type");
+      return response.text().then(html => ({ html, contentType }));
+    })
+    .then(({ html, contentType }) => {
+      if (contentType.includes("text/vnd.turbo-stream.html")) {
+        Turbo.renderStreamMessage(html);
+      } else {
+        document.documentElement.innerHTML = html; // Replace the whole document
+      }})
   }
 }

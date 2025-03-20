@@ -1,7 +1,13 @@
 <div class='py-4 first:pt-0 flex justify-between items-center' data-controller='order-item'>
   <div class='flex gap-4'>
     <div class='w-14 h-14 rounded-lg overflow-hidden'>
-      <%= image_tag order_item.product.image.variant(:thumbnail) %>
+      <% if order_item.product.image.attached? %>
+        <%= image_tag order_item.product.image.variant(:thumbnail) %>
+      <% else %>
+        <div class='bg-zinc-200 w-14 h-14 flex justify-center items-center'>
+          <%= icon 'fa-solid', 'image', class: 'text-xl text-zinc-500' %>
+        </div>
+      <% end %>
     </div>
     <div>
       <div class='text-lg font-medium'><%= order_item.product.title %></div>

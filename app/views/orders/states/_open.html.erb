@@ -1,9 +1,13 @@
-<%= form_with model: order do |f| %>
+<%= form_with model: order, data: { controller: 'auto-submit' } do |f| %>
   <div class='divide-y divide-zinc-200'>
-    <% order.order_items.each do |order_item| %>
+    <% @order_items.each do |order_item| %>
       <%= render order_item, f: %>
     <% end %>
+    <div class='py-4'>
+      <%= f.text_area :note, rows: 3, placeholder: 'Priestor pre poznámku...', data: { action: 'auto-submit#submit' }, class: 'placeholder-zinc-400 rounded-lg mt-2 bg-zinc-100 border border-zinc-300 px-5 py-2.5 w-full focus:ring-0 focus:border-blue-300 focus:bg-zinc-50 transition duration-150' %>
+    </div>
   </div>
+  <%= alert %>
 <% end %>
 
 <div class='mt-12 flex justify-center'>

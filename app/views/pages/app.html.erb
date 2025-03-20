@@ -1,16 +1,14 @@
 <% content_for :title, 'kaféem' %>
-<% content_for :action do %>
-  <%= link_to tokens_path, class: 'text-xl transition text-zinc-700 hover:text-zinc-400' do %>
-    <%= icon 'fa-solid', 'coins', class: 'ml-2' %>
-  <% end %>
-<% end %>
 
 <div id='order-item-modal'>
 </div>
 
-<div data-controller='order-item-modal'>
+<div data-controller='order-item-modal' class='<%= @order ? 'mb-32' : 'mb-16' %>'>
   <% @categories.each do |category| %>
-    <%= category.title %>
+    <div class='bg-zinc-50/90 z-10 text-xl font-semibold flex justify-between py-3 sticky top-16 backdrop-blur'>
+      <%= category.title %>
+      <%= icon 'fa-solid', 'chevron-down' %>
+    </div>
     <div class='divide-y divide-zinc-200'>
       <% category.products.each do |product| %>
         <div class='cursor-pointer' data-action='click->order-item-modal#newOrder' data-product-id='<%= product.id %>'>
@@ -22,7 +20,7 @@
 </div>
 
 <% if @order %>
-  <%= link_to @order, class: 'text-lg font-medium text-green-50 text-center fixed bottom-12 left-4 right-4 shadow-md px-5 py-4 rounded-xl bg-green-500 hover:bg-green-300 shadow-green-600/30' do %>
+  <%= link_to @order, class: 'z-40 text-lg font-medium text-green-50 text-center fixed bottom-24 left-4 right-4 shadow-md px-5 py-4 rounded-xl bg-green-500 hover:bg-green-300 shadow-green-600/30' do %>
     Zobraziť objednávku
   <% end %>
 <% end %>
