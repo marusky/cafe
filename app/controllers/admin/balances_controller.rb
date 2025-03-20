@@ -7,6 +7,11 @@ class Admin::BalancesController < AdminController
     @customer.balance += params[:balance]
 
     @customer.save!
+    PushService.send_notification(
+      push_subscription: @customer.push_subscription,
+      title: 'Pribudli ti žetóny!',
+      body: "#{params[:balance]} žetónov, k tvojim službám."
+    )
   end
 
   def add_tokens
