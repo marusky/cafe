@@ -19,6 +19,9 @@ export default class PushController extends Controller {
         case "default":
           e.target.click();
           break;
+        case "denied":
+          e.target.click();
+          break;
       }
     }
   }
@@ -31,10 +34,10 @@ export default class PushController extends Controller {
         await this.getSubscription()  
         break;
       case "denied":
-        console.log('If you denied the permissions, you cannot order through the app.')
+        alert('V poriadku, ale o to viac budeš musieť kontrolovať svoje číslo objednávky.')
         break;
-      case "default":
-        console.log('You need this to use the app.')
+        case "default":
+        alert('Pro tip: So zapnutými upozorneniami sa skôr dostaneš k svojmu hot-dogu.')
         break;
       }
 
@@ -67,12 +70,11 @@ export default class PushController extends Controller {
     const response = await fetch(url, options)
     if (response.status === 422) {
       const responseJSON = response.json()
-      console.log(`Error creating PushSubscription. ${responseJSON.join(', ')}`)
+      alert(`PushSubscription sa nepodarilo subscribnúť. ${responseJSON.join(', ')}`)
     } else if (response.status === 500) {
-      console.log('Server problem, contact ajaj@mrshq.io')
+      alert('Nečakaný move. Teda my sme ho nečakali. Už to ale pls nerob. #dík')
     } else {
       const responseJSON = response.json()
-      console.log(responseJSON.message)
     }
   }
 

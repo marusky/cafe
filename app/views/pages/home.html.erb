@@ -2,17 +2,25 @@
   <div class='mt-10 text-lg'>
     <section class='px-6 text-center'>
       <h1 class="text-4xl tracking-tighter font-semibold">
-        ☕️&nbsp; kaféem
+        kaféem
       </h1>
       <p class='mt-8 leading-relaxed text-xl'>
         Dobroty z kaféem priamo z miesta. 
       </p>
 
-      <div class='mx-auto mt-8 w-64 h-64 rounded-full bg-gray-100'>
-
+      <div class='z-10 mt-32 flex justify-center text-6xl relative'>
+        <div class='absolute top-1/2 left-1/2 -translate-x-16 -translate-y-12'>
+          🌭
+        </div>
+        <div class='absolute top-1/2 left-1/2 -translate-x-6 -translate-y-20'>
+          🍰
+        </div>
+        <div class='absolute top-1/2 left-1/2 -translate-y-1/2'>
+          ☕️
+        </div>
       </div>
 
-      <div class='mt-14'>
+      <div class='mt-20'>
         <%= render_button "Stiahnuť appku", as: :link, href: welcome_download_path, class: 'bg-neutral-900 w-full' %>
       </div>
     </section>

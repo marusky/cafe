@@ -9,19 +9,26 @@
   <p class='mt-4'>
     Ako ťa máme volať?
   </p>
-  <%= form_with model: @customer, class: 'mt-6' do |form| %>
+  <%= form_with model: @customer, class: 'group mt-6' do |form| %>
     <div class="my-4">
-      <%= form.text_field :name, placeholder: 'Meno', class: "text-center placeholder-gray-300 block rounded-md border border-gray-200 px-3 py-2 mt-2 w-full" %>
+      <%= form.text_field :name, placeholder: 'Celé meno', class: "text-center placeholder-zinc-300 block rounded-md border border-zinc-200 px-3 py-2 mt-2 w-full" %>
       <% if @customer.errors[:name].any? %>
         <div class='text-sm mt-2 text-red-400'>
           Eh.. prepáč, tvoje meno je?
         </div>
       <% end %>
     </div>
-    <%= form.submit 'Tak ma volajte', class: 'w-full text-white bg-black py-2 rounded-lg' %>
+    <button type='submit' class='w-full text-zinc-50 bg-zinc-950 group-aria-busy:bg-zinc-700 py-2 rounded-lg'>
+      <div class='group-aria-busy:hidden'>
+        Tak ma volajte
+      </div>
+      <div class='hidden group-aria-busy:block animate-spin'>
+        <%= icon 'fa-solid', 'spinner' %>
+      </div>
+    </button>
   <% end %>
 
-  <div class='mt-10 text-sm text-gray-400'>
+  <div class='mt-10 text-sm text-zinc-400'>
     Kliknutím na "Tak ma volajte" prehlasuješ, že si tvoje meno môžeme pamätať a používať za účelom fungovania kaféem appky.
   </div>
 </div>
