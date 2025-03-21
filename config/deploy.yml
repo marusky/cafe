@@ -7,7 +7,7 @@ image: mrshq/kafeem
 # Deploy to these servers.
 servers:
   web:
-    - 89.168.106.76
+    - mrshq.sk
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -18,10 +18,10 @@ servers:
 #
 # Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
 proxy:
-  ssl: false
-  # hosts: 
-  #   - futball.sk
-  #   - www.futball.sk
+  ssl: true
+  hosts: 
+    - mrshq.sk
+    - www.mrshq.sk
 
 # Credentials for your image host.
 registry:
