@@ -1,5 +1,5 @@
 <main class='container mx-auto px-8'>
-  <div class='flex flex-col text-lg text-center justify-center items-center min-h-screen' data-controller="push" data-push-vapid-public-key-value="<%= ENV['VAPID_PUBLIC_KEY'].delete("=") %>">
+  <div class='flex flex-col text-lg text-center justify-center items-center min-h-screen' data-controller="push" data-push-vapid-public-key-value="<%= Rails.application.credentials.push_subscriptions.vapid_public_key.delete("=") %>">
     <span class='text-5xl'>👮🏻‍♂️</span>
     <h1 class='mt-6 text-center text-4xl font-semibold tracking-tighter relative'>PO-VO-LE-NIA</h1>
     <p class='mt-8'>

@@ -6,9 +6,9 @@ class PushService
       p256dh: push_subscription.p256dh,
       auth: push_subscription.auth,
       vapid: {
-        subject: "mailto:#{ENV["PUSH_SUBSCRIPTIONS_EMAIL"]}",
-        public_key: ENV["VAPID_PUBLIC_KEY"],
-        private_key: ENV["VAPID_PRIVATE_KEY"]
+        subject: "mailto:#{Rails.application.credentials.push_subscriptions.email}",
+        public_key: Rails.application.credentials.push_subscriptions.vapid_public_key,
+        private_key: Rails.application.credentials.push_subscriptions.vapid_private_key
       }
     )
   end
