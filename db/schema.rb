@@ -53,9 +53,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_17_165552) do
     t.datetime "updated_at", null: false
   end
 
-# Could not dump table "customers" because of following StandardError
-#   Unknown type 'uuid' for column 'id'
-
+  create_table "customers", id: :string, force: :cascade do |t|
+    t.string "name"
+    t.integer "balance", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "order_items", force: :cascade do |t|
     t.integer "product_id", null: false
@@ -68,9 +71,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_17_165552) do
     t.index ["product_id"], name: "index_order_items_on_product_id"
   end
 
-# Could not dump table "orders" because of following StandardError
-#   Unknown type 'uuid' for column 'customer_id'
-
+  create_table "orders", force: :cascade do |t|
+    t.integer "state", default: 0, null: false
+    t.string "customer_id", null: false
+    t.text "note"
+    t.string "code"
+    t.time "finalized_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
+  end
 
   create_table "products", force: :cascade do |t|
     t.string "title"
@@ -82,9 +92,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_17_165552) do
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
-# Could not dump table "push_subscriptions" because of following StandardError
-#   Unknown type 'uuid' for column 'customer_id'
-
+  create_table "push_subscriptions", id: false, force: :cascade do |t|
+    t.string "endpoint"
+    t.string "p256dh"
+    t.string "auth"
+    t.string "customer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_push_subscriptions_on_customer_id"
+  end
 
   create_table "sessions", force: :cascade do |t|
     t.integer "admin_id", null: false
