@@ -17,8 +17,7 @@
     <link rel="icon" href="/iphone-icon.png" type="image/png">
     <%# <link rel="icon" href="/iphone-icon.svg" type="image/svg+xml"> %>
     <link rel="apple-touch-icon" href="/iphone-icon.png">
-    <!-- Splash Screen for iPhone X (1125px x 2436px) -->
-    <link rel="apple-touch-startup-image" href="/apple-launch.png">
+    <%= render 'layouts/splash_screens' %>
 
     <%# Includes all stylesheet files in app/views/stylesheets %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
