@@ -7,7 +7,7 @@ image: mrshq/kafeem
 # Deploy to these servers.
 servers:
   web:
-    - www.mrshq.sk
+    - mrshq.sk
   # job:
   #   hosts:
   #     - 192.168.0.1

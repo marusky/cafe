@@ -2,9 +2,6 @@ class PagesController < ApplicationController
   def home
   end
 
-  def admin
-  end
-
   def app
     return redirect_to_welcome if current_customer.nil?
 

@@ -1,7 +1,7 @@
 <div id='actions' class='flex justify-between items-center gap-4'>
   <% case order.state.to_sym %>
   <% when :finalized %>
-    <%= button_to cancel_admin_order_path(order), method: :patch, form_class: 'w-full group', class: 'w-full py-3 bg-rose-500 group-aria-busy:bg-rose-300 text-rose-50 rounded-xl font-medium text-lg text-center' do %>
+    <%= button_to cancel_order_path(order), method: :patch, form_class: 'w-full group', class: 'w-full py-3 bg-rose-500 group-aria-busy:bg-rose-300 text-rose-50 rounded-xl font-medium text-lg text-center' do %>
       <div class='group-aria-busy:hidden'>
         Odmietnuť
       </div>
@@ -9,7 +9,7 @@
         <%= icon 'fa-solid', 'spinner' %>
       </div>
     <% end %>
-    <%= button_to receive_admin_order_path(order), method: :patch, form_class: 'w-full group', class: 'w-full py-3 bg-blue-500 group-aria-busy:bg-blue-300 text-blue-50 rounded-xl font-medium text-lg text-center' do %>
+    <%= button_to receive_order_path(order), method: :patch, form_class: 'w-full group', class: 'w-full py-3 bg-blue-500 group-aria-busy:bg-blue-300 text-blue-50 rounded-xl font-medium text-lg text-center' do %>
       <div class='group-aria-busy:hidden'>
         Prijať
       </div>
@@ -18,7 +18,7 @@
       </div>
     <% end %>
   <% when :received %>
-    <%= button_to cancel_admin_order_path(order), method: :patch, form_class: 'group', class: 'px-5 py-3 bg-rose-500 group-aria-busy:bg-rose-300 text-rose-50 rounded-xl font-medium text-lg text-center' do %>
+    <%= button_to cancel_order_path(order), method: :patch, form_class: 'group', class: 'px-5 py-3 bg-rose-500 group-aria-busy:bg-rose-300 text-rose-50 rounded-xl font-medium text-lg text-center' do %>
       <div class='group-aria-busy:hidden'>
         <%= icon 'fa-solid', 'xmark' %>
       </div>
@@ -26,7 +26,7 @@
         <%= icon 'fa-solid', 'spinner' %>
       </div>
     <% end %>
-    <%= button_to prepare_admin_order_path(order), method: :patch, form_class: 'w-full group', class: 'w-full py-3 bg-sky-500 group-aria-busy:bg-sky-300 text-sky-50 rounded-xl font-medium text-lg text-center' do %>
+    <%= button_to prepare_order_path(order), method: :patch, form_class: 'w-full group', class: 'w-full py-3 bg-sky-500 group-aria-busy:bg-sky-300 text-sky-50 rounded-xl font-medium text-lg text-center' do %>
       <div class='group-aria-busy:hidden'>
         Je pripravená!
       </div>
@@ -35,7 +35,7 @@
       </div>
     <% end %>
   <% when :prepared %>
-    <%= button_to deliver_admin_order_path(order), method: :patch, form_class: 'w-full group', class: 'w-full py-3 bg-green-400 group-aria-busy:bg-green-300 text-green-50 rounded-xl font-medium text-lg text-center' do %>
+    <%= button_to deliver_order_path(order), method: :patch, form_class: 'w-full group', class: 'w-full py-3 bg-green-400 group-aria-busy:bg-green-300 text-green-50 rounded-xl font-medium text-lg text-center' do %>
       <div class='group-aria-busy:hidden'>
         Odovzdať
       </div>
