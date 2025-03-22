@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  constraints subdomain: "team" do
+  constraints subdomain: "team.kafeem" do
     scope module: :admin do
       resource :session, only: [:create, :destroy]
 
@@ -31,27 +31,31 @@ Rails.application.routes.draw do
     end
   end
 
-  get "welcome/download"
-  get "welcome/customer"
-  get "welcome/permissions"
+  constraints subdomain: "kafeem" do
+    get "welcome/download"
+    get "welcome/customer"
+    get "welcome/permissions"
 
-  get "app", to: "pages#app"
-  get "tokens", to: "pages#tokens"
+    get "app", to: "pages#app"
+    get "tokens", to: "pages#tokens"
 
-  resources :order_items, only: [:new, :create, :update]
-  resources :orders, only: [:show, :edit, :update] do
-    member do
-      patch "finalize", to: "orders#finalize"
+    resources :order_items, only: [:new, :create, :update]
+    resources :orders, only: [:show, :edit, :update] do
+      member do
+        patch "finalize", to: "orders#finalize"
+      end
     end
+
+    resources :customers, only: [:create]
+    post "push_subscriptions", to: "push_subscriptions#create"
+
+    get "up" => "rails/health#show", :as => :rails_health_check
+
+    get "manifest" => "pwa#manifest", :as => :pwa_manifest
+    get "service-worker" => "rails/pwa#service_worker", :as => :pwa_service_worker
+
+    get "/", to: "pages#home"
   end
 
-  resources :customers, only: [:create]
-  post "push_subscriptions", to: "push_subscriptions#create"
-
-  get "up" => "rails/health#show", :as => :rails_health_check
-
-  get "manifest" => "pwa#manifest", :as => :pwa_manifest
-  get "service-worker" => "rails/pwa#service_worker", :as => :pwa_service_worker
-
-  root "pages#home"
+  root "pages#mrshq"
 end

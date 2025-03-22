@@ -74,7 +74,8 @@ Rails.application.configure do
 
   config.hosts << "winning-sole-commonly.ngrok-free.app"
   config.hosts << "slightly-arriving-walleye.ngrok-free.app"
-  config.hosts << "team.kafeem.localhost"
+  config.hosts << "team.kafeem.mrshq.localhost"
+  config.hosts << "kafeem.mrshq.localhost"
   config.hosts << "pes.team.kafeem.localhost"
   config.web_console.permissions = '46.34.233.52'
 end

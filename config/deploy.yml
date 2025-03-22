@@ -22,6 +22,11 @@ proxy:
   hosts: 
     - mrshq.sk
     - www.mrshq.sk
+    - kafeem.mrshq.sk
+    - www.kafeem.mrshq.sk
+    - team.kafeem.mrshq.sk
+    - www.team.kafeem.mrshq.sk
+    - team.mrshq.sk
 
 # Credentials for your image host.
 registry:

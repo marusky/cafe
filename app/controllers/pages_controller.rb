@@ -14,6 +14,9 @@ class PagesController < ApplicationController
     render layout: "app"
   end
 
+  def mrshq
+  end
+
   private
 
   def redirect_to_welcome
