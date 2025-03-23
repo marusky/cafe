@@ -56,7 +56,7 @@ Rails.application.routes.draw do
     get "/", to: "pages#home"
   end
   
-  # root "pages#mrshq"
   get "up" => "rails/health#show", :as => :rails_health_check
-  root "pages#home"
+  root "pages#mrshq"
+  # root "pages#home"
 end
