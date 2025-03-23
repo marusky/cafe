@@ -1,30 +1,26 @@
 <main class='container mx-auto'>
-  <div class='mt-10 text-lg'>
-    <section class='px-6 text-center'>
-      <h1 class="text-4xl tracking-tighter font-semibold">
-        kaféem
-      </h1>
-      <p class='mt-8 leading-relaxed text-xl'>
-        Dobroty z kaféem priamo z miesta. 
-      </p>
+  <div class='text-lg'>
+    <section class="-z-20 pt-10 pb-10 bg-[url('/bg-paper.png')] bg-cover relative">
+      <div class='-z-10 absolute inset-0 bg-gradient-to-t from-zinc-50/0 via-95% via-zinc-50/0 to-zinc-50'></div>
+      <div class='-z-10 absolute inset-0 bg-gradient-to-b from-zinc-50/0 via-95% via-zinc-50/0 to-zinc-50'></div>
+      <div class='px-6 text-center'>
+        <h1 class="text-4xl tracking-tighter font-semibold">
+          kaféem
+        </h1>
+        <p class='mt-8 leading-relaxed text-xl'>
+          Dobroty z kaféem priamo z miesta. 
+        </p>
 
-      <div class='z-10 mt-32 flex justify-center text-6xl relative'>
-        <div class='absolute top-1/2 left-1/2 -translate-x-16 -translate-y-12'>
-          🌭
+        <div class='mt-12 flex justify-center'>
+          <%= image_tag 'cup-3.png', class: 'w-48' %>
         </div>
-        <div class='absolute top-1/2 left-1/2 -translate-x-6 -translate-y-20'>
-          🍰
-        </div>
-        <div class='absolute top-1/2 left-1/2 -translate-y-1/2'>
-          ☕️
-        </div>
-      </div>
 
-      <div class='mt-20'>
-        <%= render_button "Stiahnuť appku", as: :link, href: welcome_download_path, class: 'bg-neutral-900 w-full' %>
+        <div class='mt-14'>
+          <%= render_button "Stiahnuť appku", as: :link, href: welcome_download_path, class: 'bg-neutral-900 w-full' %>
+        </div>
       </div>
     </section>
-    <div class='mt-20 w-full overflow-hidden translate-y-1'>
+    <div class='w-full overflow-hidden translate-y-1'>
       <svg viewBox="0 0 393 70" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 70H393V62.9027C393 62.9027 357 68.1403 297.5 38.8986C238 9.65687 227 14.8941 216 16.6402C205 18.3863 157 34.5344 116.5 21.8775C76 9.2205 62.6181 -8.73895 0 4.85635V70Z" fill="#fde047"/>
       </svg>
@@ -95,6 +91,6 @@
         <%= render_button "Idem riešim", as: :link, href: welcome_download_path, class: 'bg-neutral-900 w-full' %>
       </div>
     </section>
-    <section class='text-sm text-gray-600 mt-2 mb-5 text-center'>Made with &lt;3 by <span class='text-blue-500'>mrshq.io</span></section>
+    <section class='text-sm text-gray-600 mt-2 mb-5 text-center'>Made with &lt;3 by <span class='text-blue-500'><%= link_to 'mrshq.sk', 'https://mrshq.sk' %></span></section>
   </div>
 </main>

@@ -57,5 +57,6 @@ Rails.application.routes.draw do
     get "/", to: "pages#home"
   end
 
-  root "pages#mrshq"
+  # root "pages#mrshq"
+  root "pages#home"
 end
