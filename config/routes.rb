@@ -50,13 +50,15 @@ Rails.application.routes.draw do
     post "push_subscriptions", to: "push_subscriptions#create"
 
     
-    get "manifest" => "pwa#manifest", :as => :pwa_manifest
-    get "service-worker" => "rails/pwa#service_worker", :as => :pwa_service_worker
     
     get "/", to: "pages#home"
   end
   
+  get "manifest" => "pwa#manifest", :as => :pwa_manifest
+  get "service-worker" => "rails/pwa#service_worker", :as => :pwa_service_worker
+
   get "up" => "rails/health#show", :as => :rails_health_check
+
   root "pages#mrshq"
   # root "pages#home"
 end
