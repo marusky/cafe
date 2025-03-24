@@ -4,14 +4,17 @@ class Admin::BalancesController < AdminController
 
   def update
     @customer = Customer.find(params[:cid])
-    @customer.balance += params[:balance]
+    @customer.balance += params[:tokens].to_i
 
     @customer.save!
+
     PushService.send_notification(
       push_subscription: @customer.push_subscription,
       title: 'Pribudli ti žetóny!',
       body: "#{params[:balance]} žetónov, k tvojim službám."
     )
+
+    redirect_to balance_url
   end
 
   def add_tokens

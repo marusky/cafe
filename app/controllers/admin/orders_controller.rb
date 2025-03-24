@@ -2,11 +2,6 @@ class Admin::OrdersController < AdminController
   before_action :set_order, except: :index
 
   def index
-    @totals = {
-      in_progress: Order.in_progress.count,
-      done: Order.done.count
-    }
-
     @orders = Order.done.order(:created_at)
     return @orders if params[:state] == 'done'
 
