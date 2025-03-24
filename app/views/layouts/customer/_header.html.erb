@@ -8,10 +8,13 @@
     </h1>
     <div class='text-lg'>
       <%= link_to tokens_path do %>
-        <span class='font-medium'>
-          <%= current_customer.balance %>
-        </span>
-        <%= icon 'fa-solid', 'coins', class: 'ml-1' %>
+        <%= turbo_stream_from :balance %>
+        <div class='font-medium'>
+          <span id="balance-<%= current_customer.id %>">
+            <%= current_customer.balance %>
+          </span>
+          <%= icon 'fa-solid', 'coins', class: 'ml-1' %>
+        </div>
       <% end %>
     </div>
   </div>
