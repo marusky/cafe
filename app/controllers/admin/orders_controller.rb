@@ -2,7 +2,7 @@ class Admin::OrdersController < AdminController
   before_action :set_order, except: :index
 
   def index
-    @orders = Order.done.order(:created_at)
+    @orders = Order.done.order(created_at: :desc)
     return @orders if params[:state] == 'done'
 
     @orders = Order.in_progress.order(:created_at)
