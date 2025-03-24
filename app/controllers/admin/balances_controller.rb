@@ -11,7 +11,7 @@ class Admin::BalancesController < AdminController
     PushService.send_notification(
       push_subscription: @customer.push_subscription,
       title: 'Pribudli ti žetóny!',
-      body: "#{params[:balance]} žetónov, k tvojim službám."
+      body: "#{params[:tokens]} žetónov, k tvojim službám."
     )
 
     redirect_to balance_url
