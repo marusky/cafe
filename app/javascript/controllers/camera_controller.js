@@ -6,6 +6,8 @@ export default class extends Controller {
 
   connect() {
     this.startCamera()
+
+    this.startListening()
   }
 
   openTokensModal(cid, eur) {
@@ -30,6 +32,31 @@ export default class extends Controller {
     };
 
     await this.getMedia(constraints)
+  }
+
+  startListening() {
+    this.listener = this.beforeVisitHandler.bind(this);
+    document.addEventListener("turbo:before-visit", this.listener);
+  }
+
+  beforeVisitHandler() {
+    this.stopCamera();
+    this.stopListening();
+  }
+
+  stopListening() {
+    if (this.listener) {
+      document.removeEventListener("turbo:before-visit", this.listener);
+      this.listener = null; // Clear reference
+    }
+  }
+
+  stopCamera() {
+    const video = document.querySelector('video');
+    const mediaStream = video.srcObject;
+    const tracks = mediaStream.getTracks();
+
+    tracks.forEach(track => track.stop())
   }
 
   async getMedia(constraints) {

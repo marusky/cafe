@@ -5,14 +5,21 @@
   <video data-camera-target='video' hidden></video>
   <div class='flex justify-center relative'>
     <div class='z-10 absolute inset-0 flex justify-center items-center'>
-      <%# TODO: add some nice QR here, too %>
-      <%# <%= icon 'fa-solid', 'qrcode', class: 'text-[15rem] text-zinc-100/50 animate-pulse' %>
     </div>
     <canvas data-camera-target="canvas" hidden class="rounded-xl w-[300px] h-[300px]"></canvas>
   </div>
 
   <div class='mt-4 text-center text-zinc-400'>
     Pre pridanie žetónov umiestni QR kód účastníka do stredu kamery.
+  </div>
+
+  <div>
+    <button data-action='camera#startCamera' class='mt-6 w-full text-center py-4 rounded-xl bg-blue-500 cursor-pointer hover:bg-blue-400 text-blue-50 font-semibold transition'>
+      Zapni kameru
+    </button>
+    <button data-action='camera#stopCamera' class='mt-4 w-full text-center py-4 rounded-xl bg-rose-500 cursor-pointer hover:bg-rose-400 text-rose-50 font-semibold transition'>
+      Vypni kameru
+    </button>
   </div>
 </div>
 
