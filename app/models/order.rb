@@ -7,6 +7,9 @@ class Order < ApplicationRecord
   after_update_commit :broadcast_changes_to_admins
   after_update_commit :broadcast_changes_to_customer
 
+  scope :in_progress, -> { where(state: %w[finalized received prepared]) }
+  scope :done, -> { where(state: %w[delivered cancelled]) }
+
   enum :state, {
     open: 0,
     finalized: 1,

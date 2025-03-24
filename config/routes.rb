@@ -48,8 +48,6 @@ Rails.application.routes.draw do
 
     resources :customers, only: [:create]
     post "push_subscriptions", to: "push_subscriptions#create"
-
-    
     
     get "/", to: "pages#home"
   end

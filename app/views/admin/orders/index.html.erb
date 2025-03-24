@@ -1,8 +1,19 @@
 <% content_for :title, 'Objednávky' %>
 
-<%= turbo_stream_from :orders %>
+<% unless params[:state] == 'done' %>
+  <%= turbo_stream_from :orders %>
+<% end %>
 
-<div id='orders' class='space-y-4'>
+<div class='flex gap-2'>
+  <%= link_to url_for({ state: :in_progress }), class: "#{in_progress_tab_class} px-4 py-2.5 rounded-full" do %>
+    Prebiehajúce (<%= @totals[:in_progress] %>)
+  <% end %>
+  <%= link_to url_for({ state: :done }), class: "#{done_tab_class} px-4 py-2.5 rounded-full" do %>
+    Ukončené (<%= @totals[:done] %>)
+  <% end %>
+</div>
+
+<div id='orders' class='mt-4 space-y-4'>
   <% @orders.each do |order| %>
     <%= render order %>
   <% end %>
