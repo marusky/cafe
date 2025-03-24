@@ -16,10 +16,18 @@ class CustomerOrderService
     @customer.balance >= total_sum
   end
 
-  def pay
+  def pay!
     ActiveRecord::Base.transaction do
       @order.update!(state: :finalized, finalized_at: Time.current)
       @customer.update!(balance: @customer.balance - total_sum)
+    end
+  end
+
+  def cancel_order!
+    ActiveRecord::Base.transaction do
+      @order.update!(state: :cancelled)
+
+      @customer.update!(balance: @customer.balance + total_sum)
     end
   end
 

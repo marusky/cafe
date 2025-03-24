@@ -39,12 +39,8 @@ class Order < ApplicationRecord
     self.code = ('0'..'9').to_a.shuffle.first(4).join('')
   end
 
-  def customer_trackable?
-    finalized? || received? || prepared?
-  end
-
   def broadcast_changes_to_customer
-    broadcast_update_to :order, partial: "orders/states/#{state}" if customer_trackable?
+    broadcast_update_to :order, partial: "orders/states/#{state}"
   end
 
   def broadcast_changes_to_admins

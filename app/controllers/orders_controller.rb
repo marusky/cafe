@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
     end
 
     if service.sufficient_balance?
-      service.pay
+      service.pay!
     else
       flash.now[:alert] = 'Na túto objednávku nemáš dostatok žetónov.'
       set_order_items

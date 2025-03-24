@@ -34,7 +34,14 @@ class Admin::OrdersController < AdminController
   def cancel
     return unless @order.finalized? || @order.received?
 
-    @order.cancelled!
+    service = CustomerOrderService.new(customer: @order.customer, order: @order)
+
+    service.cancel_order!
+    PushService.send_notification(
+      push_subscription: @order.customer.push_subscription,
+      title: "Objednávku ##{@order.id} je zrušená.", 
+      body: "Mrzí nás to. Klikni sem pre viac informácií.",
+    )
   end
 
   private
