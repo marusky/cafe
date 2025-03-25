@@ -24,15 +24,19 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class='bg-zinc-50 text-zinc-800'>
+  <body class='bg-zinc-50 text-zinc-800' data-controller='pull-to-refresh' data-action='turbo:load@document->pull-to-refresh#initializeRefresher'>
     <% if authenticated? %>
       <%= render 'layouts/admin/header' %>
     <% end %>
     <%= render 'layouts/shared/alert' %>
     <%= render 'layouts/shared/notice' %>
-    <main class="container mt-16 mx-auto p-5">
-      <%= yield %>
-    </main>
+    <div class="mt-16">
+      <main class='container mx-auto p-5'>
+        <%= render 'layouts/shared/alert' %>
+        <%= render 'layouts/shared/notice' %>
+        <%= yield %>
+      </main>
+    </div>
     <% if authenticated? %>
       <%= render 'layouts/admin/menu' %>
     <% end %>
