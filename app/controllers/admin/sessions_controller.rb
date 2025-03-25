@@ -7,7 +7,7 @@ class Admin::SessionsController < AdminController
       start_new_session_for admin
       redirect_to categories_url
     else
-      redirect_to team_login_url, alert: "Try another email address or password."
+      redirect_to team_login_url, alert: "Nesprávne meno alebo heslo."
     end
   end
 
