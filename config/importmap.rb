@@ -9,3 +9,5 @@ pin "jsqr" # @1.4.0
 pin "qrcode", to: "https://ga.jspm.io/npm:qrcode@1.5.4/lib/browser.js"
 pin "dijkstrajs" # @1.0.3
 pin "@stimulus-components/auto-submit", to: "@stimulus-components--auto-submit.js" # @6.0.0
+pin "@stimulus-components/notification", to: "@stimulus-components--notification.js" # @3.0.0
+pin "stimulus-use" # @0.52.3

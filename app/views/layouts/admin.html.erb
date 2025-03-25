@@ -28,6 +28,8 @@
     <% if authenticated? %>
       <%= render 'layouts/admin/header' %>
     <% end %>
+    <%= render 'layouts/shared/alert' %>
+    <%= render 'layouts/shared/notice' %>
     <main class="container mt-16 mx-auto p-5">
       <%= yield %>
     </main>
