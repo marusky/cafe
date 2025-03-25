@@ -31,7 +31,7 @@ class Admin::ProductsController < AdminController
 
   def toggle_availability
     availability_params = params.expect(product: [:is_available])
-    @product.update(availability_params)
+    @product.update!(availability_params)
   end
 
   def destroy

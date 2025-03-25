@@ -2,13 +2,7 @@ Rails.application.routes.draw do
   constraints subdomain: "team.kafeem" do
     scope module: :admin do
       resource :session, only: [:create, :destroy]
-
-      resources :categories
-      resources :products, except: :index do
-        member do
-          put "availability", to: "products#toggle_availability"
-        end
-      end
+      put 'toggle_accepting_orders', to: 'admins#toggle_accepting_orders'
 
       resources :orders, only: :index do
         member do
@@ -19,12 +13,19 @@ Rails.application.routes.draw do
         end
       end
 
+      resources :categories
+      resources :products, except: :index do
+        member do
+          put "availability", to: "products#toggle_availability"
+        end
+      end
+
       resource :balance, only: :show do
         get ":cid/add-tokens", to: "balances#add_tokens", as: :add_tokens
         put ":cid/update", to: "balances#update", as: :update_customer
       end
 
-      get "account", to: "pages#account"
+      get "settings", to: "pages#settings"
       get "login", to: "pages#login", as: :team_login
 
       get "/", to: "orders#index"

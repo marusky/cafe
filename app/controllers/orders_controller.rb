@@ -23,6 +23,13 @@ class OrdersController < ApplicationController
 
     service = CustomerOrderService.new(customer: current_customer, order: @order)
 
+    if service.not_accepting_new_orders?
+      set_order_items
+      
+      flash.now[:alert] = 'Kaféem momentálne neprijíma nové objednávky.'
+      return render :show, status: :unprocessable_entity
+    end
+
     if service.any_order_item_unavailable?
       service.remove_unavailable_order_items
       set_order_items

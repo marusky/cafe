@@ -15,8 +15,8 @@ module MenuHelper
     controller_name == "balances" ? "text-zinc-700" : "text-zinc-400"
   end
 
-  def account_tab_active
-    action_name == "account" ? "text-zinc-700" : "text-zinc-400"
+  def settings_tab_active
+    action_name == "settings" ? "text-zinc-700" : "text-zinc-400"
   end
 
   def tokens_tab_active

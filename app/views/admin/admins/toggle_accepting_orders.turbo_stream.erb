@@ -1,0 +1,5 @@
+<%= turbo_stream.replace 'accepting-orders-switch' do %>
+  <div id='accepting-orders-switch' data-controller='accepting-orders'>
+    <%= render_switch '', id: 'available', name: 'available', checked: Current.admin.accepting_orders, action_on_toggle: 'accepting-orders#toggle' %>
+  </div>
+<% end %>

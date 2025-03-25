@@ -4,6 +4,6 @@ class Admin::PagesController < AdminController
   def login
   end
 
-  def account
+  def settings
   end
 end

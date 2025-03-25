@@ -4,6 +4,10 @@ class CustomerOrderService
     @order = order
   end
 
+  def not_accepting_new_orders?
+    !Admin.first.accepting_orders
+  end
+
   def any_order_item_unavailable?
     @order.unavailable_order_items.present?
   end
