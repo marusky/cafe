@@ -44,6 +44,8 @@ class Order < ApplicationRecord
   end
 
   def broadcast_changes_to_customer
+    return unless saved_change_to_state?
+
     broadcast_update_to :order, partial: "orders/states/#{state}"
     broadcast_replace_to :customer_orders
   end

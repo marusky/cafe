@@ -21,7 +21,7 @@
               <%= humanized_price @product.price %>
             </div>
           </div>
-          <%= form_with model: @order_item do |f| %>
+          <%= form_with model: @order_item, class: 'group' do |f| %>
             <%= f.hidden_field :product_id, value: @product.id %>
             <div class='mt-6 flex gap-4 justify-between items-center'>
               <div class='flex items-center border border-zinc-300 rounded-xl text-xl h-16'>
@@ -35,11 +35,16 @@
                   +
                 </div>
               </div>
-              <%= button_tag type: :submit, class:'w-full h-16 rounded-xl text-emerald-50 bg-green-500 hover:bg-green-300 flex flex-col justify-center items-center' do %>
-                <div class='text-lg font-semibold'>
-                  Pridať
+              <%= button_tag type: :submit, class: 'w-full h-16 rounded-xl text-emerald-50 bg-green-500 hover:bg-green-300 flex flex-col justify-center items-center' do %>
+                <div class='group-aria-busy:hidden'>
+                  <div class='text-lg font-semibold'>
+                    Pridať
+                  </div>
+                  <div class='text-sm font-medium' data-order-item-target='sum' data-price='<%= @product.price %>'></div>
                 </div>
-                <div class='text-sm font-medium' data-order-item-target='sum' data-price='<%= @product.price %>'></div>
+                <div class='text-lg font-semibold hidden group-aria-busy:block animate-spin'>
+                  <%= icon 'fa-solid', 'spinner' %>
+                </div>
               <% end %>
             </div>
           <% end %>

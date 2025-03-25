@@ -7,20 +7,17 @@ class OrderItemsController < ApplicationController
   end
 
   def create
-    product = Product.find(order_item_params[:product_id])
-    order = Order.open.find_by(customer: current_customer) || Order.new(customer: current_customer)
-    order_item = OrderItem.new(order_item_params.merge(cost: product.price, product:, order:))
+    service = OrderItemCreationService.new(
+      order_item_params:,
+      customer: current_customer,
+    )
 
-    if order_item.valid?
-      if product_already_in_order?(order, order_item)
-        existing_order_item = order.order_items.find { |any_order_item| any_order_item.product == order_item.product }
-        existing_order_item.update!(amount: existing_order_item.amount + order_item.amount)
-      else
-        order.save!
-        order_item.save!
-      end
+    if service.order_item.valid?
+      service.call
 
-      redirect_to app_url
+      redirect_to app_url, notice: 'Produkt bol pridaný.'
+    else
+      redirect_to app_url, alert: 'Hups! Niečo sa pokazilo!'
     end
   end
 
@@ -38,9 +35,5 @@ class OrderItemsController < ApplicationController
 
   def order_item_params
     params.expect(order_item: [:amount, :product_id])
-  end
-
-  def product_already_in_order?(order, order_item)
-    order.order_items.any? { |any_order_item| any_order_item.product == order_item.product }
   end
 end
