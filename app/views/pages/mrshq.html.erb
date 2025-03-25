@@ -1,16 +1,24 @@
-<div class='fixed left-12 top-[25%] bg-blue-500/50 w-20 h-32 blur-3xl'></div>
-<div class='fixed left-1/2 top-1/3 bg-indigo-500/50 w-20 h-32 blur-3xl'></div>
-<div class='fixed left-24 top-1/2 bg-orange-400/50 w-20 h-32 blur-3xl'></div>
-<div class='h-screen bg-zinc-950 text-zinc-50 flex flex-col justify-center items-center'>
-  <div class='text-5xl tracking-tight font-medium bg-gradient-to-r from-orange-500/30 via-purple-500 to-indigo-500/30 bg-clip-text text-transparent'>
-    We make stuff
-  </div>
-  <div class='mt-6 text-zinc-100/70 text-center'>
-    <div class='bg-gradient-to-r bg-clip-text text-transparent from-zinc-50 via-zinc-50/80 to-zinc-50/30'>
+<div class='h-screen bg-zinc-950 text-zinc-50'>
+  <div class='mx-auto container h-screen px-6 flex flex-col justify-center md:items-center'>
+    <div class='text-5xl tracking-tight font-medium'>
+      We make stuff.
+    </div>
+    <div class='mt-2 text-xl tracking-tight font-light'>
       Have an idea?
     </div>
-    <div class='bg-gradient-to-r bg-clip-text text-transparent from-zinc-50/80 via-zinc-50 to-zinc-50/30'>
-      Drop us a line at <span class='text-blue-400 underline underline-offset-2'>hey@mrshq.sk</span>.
+    <div class='mt-6 tracking-tight bg-gradient-to-r from-[#6883FB] to-[#C460F2] w-fit text-transparent bg-clip-text'>
+      <%= link_to 'mailto:hey@mrshq.sk' do %>
+        <div class='group'>
+          hey@mrshq.sk
+          <span class='transition-all duration-150 group-hover:ml-3'>
+            &rarr;
+          </span>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
+
+<script>
+  document.body.style.backgroundColor = '#09090b'
+</script>
