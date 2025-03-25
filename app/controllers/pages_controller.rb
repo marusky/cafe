@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   def app
     return redirect_to_welcome if current_customer.nil?
 
-    @categories = Category.order(:title).includes(:products)
+    @categories = Category.order(:title).includes(:products).joins(:products)
     @orders_in_progress = current_customer.orders.where(state: [:open, :finalized, :received, :prepared])
     render layout: "app"
   end
