@@ -38,6 +38,14 @@ class OrdersController < ApplicationController
       return render :show, status: :unprocessable_entity
     end
 
+    if service.any_product_price_has_changed?
+      service.update_order_items_with_changed_product_price!
+      set_order_items
+
+      flash.now[:alert] = 'Niektorý z produktov, ktoré máš v objednávke, zmenil svoju cenu. Pred potvrdením objednávky si to pre istotu skontroluj.'
+      return render :show, status: :unprocessable_entity
+    end
+
     if service.sufficient_balance?
       service.pay!
     else

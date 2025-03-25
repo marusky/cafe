@@ -10,9 +10,9 @@ export default class extends Controller {
     const standalone = navigator.standalone ||
       window.matchMedia("(display-mode: standalone)").matches;
 
-    // if (!standalone) {
-    //   return;
-    // }
+    if (!standalone) {
+      return;
+    }
 
     PullToRefresh.init({
       mainElement: 'main',

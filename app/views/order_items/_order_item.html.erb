@@ -11,7 +11,7 @@
     </div>
     <div>
       <div class='text-lg font-medium'><%= order_item.product.title %></div>
-      <div class='text-zinc-600' data-order-item-target='sum' data-price='<%= order_item.product.price %>'><%= humanized_price order_item.total %></div>
+      <div class='text-zinc-600' data-order-item-target='sum' data-price='<%= order_item.cost %>'><%= humanized_price order_item.total %></div>
     </div>
   </div>
   <div class='flex items-center border border-zinc-300 rounded-xl text-xl h-12'>

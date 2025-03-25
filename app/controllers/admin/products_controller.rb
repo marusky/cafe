@@ -1,5 +1,5 @@
 class Admin::ProductsController < AdminController
-  before_action :set_product, only: %i[ show edit update destroy toggle_availability ]
+  before_action :set_product, only: %i[ show edit update toggle_availability ]
 
   def show
   end
@@ -15,7 +15,7 @@ class Admin::ProductsController < AdminController
     @product = Product.new(product_params)
 
     if @product.save
-      redirect_to @product, notice: "Product was successfully created."
+      redirect_to @product, notice: "Produkt bol vytvorený."
     else
       render :new, status: :unprocessable_entity
     end
@@ -23,7 +23,7 @@ class Admin::ProductsController < AdminController
 
   def update
     if @product.update(product_params)
-      redirect_to @product, notice: "Product was successfully updated."
+      redirect_to @product, notice: "Produkt bol upravený."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -32,12 +32,6 @@ class Admin::ProductsController < AdminController
   def toggle_availability
     availability_params = params.expect(product: [:is_available])
     @product.update!(availability_params)
-  end
-
-  def destroy
-    @product.destroy!
-
-    redirect_to @product.category, status: :see_other, notice: "Product was successfully destroyed."
   end
 
   private

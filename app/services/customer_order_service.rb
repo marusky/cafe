@@ -16,6 +16,16 @@ class CustomerOrderService
     @order.unavailable_order_items.delete_all
   end
 
+  def any_product_price_has_changed?
+    order_items_with_changed_product_price.present?
+  end
+
+  def update_order_items_with_changed_product_price!
+    order_items_with_changed_product_price.each do |order_item|
+      order_item.update!(cost: order_item.product.price)
+    end
+  end
+
   def sufficient_balance?
     @customer.balance >= @order.total_sum
   end
@@ -33,5 +43,16 @@ class CustomerOrderService
 
       @customer.update!(balance: @customer.balance + @order.total_sum)
     end
+  end
+
+  private
+  
+  def order_items_with_changed_product_price
+    @_order_items_with_changed_product_price ||= @order
+      .order_items
+      .includes(:product)
+      .select do |order_item|
+        order_item.cost != order_item.product.price
+      end
   end
 end

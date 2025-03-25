@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       end
 
       resources :categories
-      resources :products, except: :index do
+      resources :products, except: [:index, :destroy] do
         member do
           put "availability", to: "products#toggle_availability"
         end
