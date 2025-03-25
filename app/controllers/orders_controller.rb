@@ -1,7 +1,11 @@
 class OrdersController < ApplicationController
   layout "app"
 
-  before_action :set_order
+  before_action :set_order, except: :index
+
+  def index
+    @orders = current_customer.orders.includes(:order_items).order(created_at: :desc)
+  end
 
   def show
     set_order_items

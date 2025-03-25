@@ -1,8 +1,12 @@
 <div id='badge'>
   <% case order.state.to_sym %>
+  <% when :open %>
+    <div class='px-3 py-1 rounded-2xl bg-zinc-200 text-zinc-700'>
+      Otvorená
+    </div>
   <% when :finalized %>
-    <div class='px-3 py-1 rounded-2xl bg-zinc-400 text-zinc-50'>
-      Nová
+    <div class='px-3 py-1 rounded-2xl bg-amber-400 text-amber-50'>
+      Podaná
     </div>
   <% when :received %>
     <div class='px-3 py-1 rounded-2xl bg-blue-500 text-blue-50'>

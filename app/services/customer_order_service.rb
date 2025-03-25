@@ -13,13 +13,13 @@ class CustomerOrderService
   end
 
   def sufficient_balance?
-    @customer.balance >= total_sum
+    @customer.balance >= @order.total_sum
   end
 
   def pay!
     ActiveRecord::Base.transaction do
       @order.update!(state: :finalized, finalized_at: Time.current)
-      @customer.update!(balance: @customer.balance - total_sum)
+      @customer.update!(balance: @customer.balance - @order.total_sum)
     end
   end
 
@@ -27,13 +27,7 @@ class CustomerOrderService
     ActiveRecord::Base.transaction do
       @order.update!(state: :cancelled)
 
-      @customer.update!(balance: @customer.balance + total_sum)
+      @customer.update!(balance: @customer.balance + @order.total_sum)
     end
-  end
-
-  private
-
-  def total_sum
-    @_total_sum ||= @order.order_items.sum { |order_item| order_item.amount * order_item.cost }
   end
 end

@@ -1,0 +1,11 @@
+<% content_for :title, 'Objednávky' %>
+
+<%= turbo_stream_from :customer_orders %>
+
+<div id='orders' class='mt-4 space-y-4'>
+  <% @orders.each do |order| %>
+    <%= link_to order, class: 'block' do %>
+      <%= render order %>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,18 @@
+<div id='<%= dom_id order %>' class='bg-white shadow-lg shadow-zinc-200 border border-zinc-200 rounded-xl p-4'>
+  <div class='flex justify-between items-center relative'>
+    <div>
+      <h3 class='text-2xl font-medium'>#<%= order.id %></h3>
+    </div>
+    <%= render 'orders/badge', order: %>
+  </div>
+  <div class='text-zinc-600 py-3 border-b border-zinc-200'>
+    <ul class='list-disc pl-4'>
+      <% order.order_items.each do |order_item| %>
+        <li><%= order_item.amount %>x <%= order_item.product.title %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class='mt-2'>
+    <%= humanized_price order.total_sum %>
+  </div>
+</div>

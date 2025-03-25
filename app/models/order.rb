@@ -33,6 +33,10 @@ class Order < ApplicationRecord
       .order(:created_at)
   end
 
+  def total_sum
+    order_items.sum { |order_item| order_item.amount * order_item.cost }
+  end
+
   private
 
   def generate_code
@@ -41,6 +45,7 @@ class Order < ApplicationRecord
 
   def broadcast_changes_to_customer
     broadcast_update_to :order, partial: "orders/states/#{state}"
+    broadcast_replace_to :customer_orders
   end
 
   def broadcast_changes_to_admins
