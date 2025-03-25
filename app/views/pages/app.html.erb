@@ -20,7 +20,7 @@
 </div>
 
 <% if @orders_in_progress.size == 1 %>
-  <%= link_to @orders_in_progress.first, class: 'z-40 text-lg font-medium text-green-50 text-center fixed bottom-24 left-4 right-4 shadow-md px-5 py-3 rounded-2xl bg-green-500 hover:bg-green-300 shadow-green-600/30' do %>
+  <%= link_to order_path(@orders_in_progress.first, back_path: app_path), class: 'z-40 text-lg font-medium text-green-50 text-center fixed bottom-24 left-4 right-4 shadow-md px-5 py-3 rounded-2xl bg-green-500 hover:bg-green-300 shadow-green-600/30' do %>
     <div>
       Zobraziť objednávku
     </div>

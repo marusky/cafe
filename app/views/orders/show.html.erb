@@ -1,6 +1,6 @@
 <% content_for :title, "Objednávka ##{@order.id}" %>
 <% content_for :back do %>
-  <%= link_to _back_url, class: 'text-sky-500' do %>
+  <%= link_to params[:back_path] || app_path, class: 'text-sky-500' do %>
     &lt; Späť
   <% end %>
 <% end %>
