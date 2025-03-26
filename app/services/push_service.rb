@@ -12,4 +12,16 @@ class PushService
       }
     )
   end
+
+  def self.sunday_notification
+    Customer.where(balance: 1..).each do |customer|
+      next unless customer.push_subscription
+
+      send_notification(
+        push_subscription: customer.push_subscription,
+        title: 'Posledná šanca minúť e-žetóny!',
+        body: 'Ešte ti ich tu zopár ostalo a Kaféem je otvorené už len dnes.'
+      )
+    end
+  end
 end
