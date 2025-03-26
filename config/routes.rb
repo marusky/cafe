@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     get "app", to: "pages#app"
     get "tokens", to: "pages#tokens"
 
-    resources :order_items, only: [:new, :create, :update]
+    resources :order_items, only: [:new, :create, :update, :destroy]
     resources :orders, only: [:index, :show, :edit, :update] do
       member do
         patch "finalize", to: "orders#finalize"

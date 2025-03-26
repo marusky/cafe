@@ -19,6 +19,18 @@ export default class extends Controller {
       if (orderItemId) {
         void this.updateAmount(orderItemId, amount)
       }
+    } else {
+      const csrfToken = document.querySelector("[name='csrf-token']").content
+
+      fetch(`${location.origin}/order_items/${orderItemId}`, {
+        method: "DELETE",
+        headers: {
+          Accept: "text/vnd.turbo-stream.html",
+          "X-CSRF-Token": csrfToken,
+        },
+      })
+        .then(r => r.text())
+        .then(html => Turbo.renderStreamMessage(html))
     }
   }
   

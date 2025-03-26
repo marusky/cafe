@@ -1,5 +1,5 @@
 class OrderItemsController < ApplicationController
-  before_action :set_order_item, only: :update
+  before_action :set_order_item, only: [:update, :destroy]
 
   def new
     @product = Product.find(params[:product_id])
@@ -25,6 +25,12 @@ class OrderItemsController < ApplicationController
     return unless @order_item.order.open?
 
     @order_item.update!(amount: order_item_params[:amount])
+  end
+
+  def destroy
+    return unless @order_item.order.open?
+
+    @order_item.destroy!
   end
 
   private
