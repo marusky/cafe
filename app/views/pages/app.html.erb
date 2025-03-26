@@ -7,7 +7,6 @@
   <% @categories.each do |category| %>
     <div class='bg-zinc-50/90 z-10 text-xl font-semibold flex justify-between py-3 sticky top-16 backdrop-blur'>
       <%= category.title %>
-      <%= icon 'fa-solid', 'chevron-down' %>
     </div>
     <div class='divide-y divide-zinc-200'>
       <% category.products.available.order(:title).each do |product| %>
