@@ -1,0 +1,3 @@
+<%= turbo_stream.update dom_id(@order) %>
+  <%= render "orders/states/#{@order.state}", order: @order %>
+<% end %>
