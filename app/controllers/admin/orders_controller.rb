@@ -21,7 +21,7 @@ class Admin::OrdersController < AdminController
     PushService.send_notification(
       push_subscription: @order.customer.push_subscription,
       title: "Objednávka ##{@order.id} je hotová!", 
-      body: "Nezabudni na kód: #{@order.code}",
+      body: "Pri vyzdvihnutí povedz heslo #{@order.code}.",
     )
   end
 
