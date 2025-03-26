@@ -3,7 +3,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
 
     if @customer.save
-      cookies.encrypted[:cui] = @customer.id
+      cookies.encrypted.permanent[:cui] = @customer.id
 
       redirect_to welcome_permissions_url
     else 
