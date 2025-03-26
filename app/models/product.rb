@@ -13,4 +13,6 @@ class Product < ApplicationRecord
   validates :price, numericality: { 
     only_integer: true, greater_than_or_equal_to: MINIMAL_PRICE 
   }
+
+  scope :available, -> { where(is_available: true) }
 end

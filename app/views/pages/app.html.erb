@@ -10,7 +10,7 @@
       <%= icon 'fa-solid', 'chevron-down' %>
     </div>
     <div class='divide-y divide-zinc-200'>
-      <% category.products.order(:title).each do |product| %>
+      <% category.products.available.order(:title).each do |product| %>
         <div class='cursor-pointer' data-action='click->order-item-modal#newOrder' data-product-id='<%= product.id %>'>
           <%= render 'admin/products/product', product: product %>
         </div>
