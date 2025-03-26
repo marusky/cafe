@@ -40,7 +40,7 @@ class Admin::OrdersController < AdminController
     PushService.send_notification(
       push_subscription: @order.customer.push_subscription,
       title: "Objednávka ##{@order.id} je zrušená.", 
-      body: "Mrzí nás to. Klikni sem pre viac informácií.",
+      body: "Asi nám práve niečo došlo. Radi ti však pripravíme to, čo máme.",
     )
   end
 
