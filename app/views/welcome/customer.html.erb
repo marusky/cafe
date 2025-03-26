@@ -11,7 +11,7 @@
   </p>
   <%= form_with model: @customer, class: 'group mt-6' do |form| %>
     <div class="my-4">
-      <%= form.text_field :name, placeholder: 'Celé meno', class: "text-center placeholder-zinc-300 block rounded-md border border-zinc-200 px-3 py-2 mt-2 w-full" %>
+      <%= form.text_field :name, placeholder: 'Meno a priezvisko', class: "text-center placeholder-zinc-300 block rounded-md border border-zinc-200 px-3 py-2 mt-2 w-full" %>
       <% if @customer.errors[:name].any? %>
         <div class='text-sm mt-2 text-red-400'>
           Eh.. prepáč, tvoje meno je?
