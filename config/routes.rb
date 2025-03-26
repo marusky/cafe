@@ -49,6 +49,7 @@ Rails.application.routes.draw do
 
     resources :customers, only: [:create]
     post "push_subscriptions", to: "push_subscriptions#create"
+    get 'tv', to: 'pages#tv'
     
     get "/", to: "pages#home"
   end
@@ -59,5 +60,4 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", :as => :rails_health_check
 
   root "pages#mrshq"
-  # root "pages#home"
 end

@@ -6,6 +6,7 @@ class Order < ApplicationRecord
 
   after_update_commit :broadcast_changes_to_admins
   after_update_commit :broadcast_changes_to_customer
+  after_update_commit :broadcast_changes_to_tv
 
   scope :in_progress, -> { where(state: %w[finalized received prepared]) }
   scope :done, -> { where(state: %w[delivered cancelled]) }
@@ -58,6 +59,20 @@ class Order < ApplicationRecord
       broadcast_replace_to :orders, partial: 'admin/orders/order'
     when :cancelled, :delivered
       broadcast_remove_to :orders
+    end
+  end
+
+  def broadcast_changes_to_tv
+    case state.to_sym
+    when :received
+      broadcast_append_to :tv_orders, target: 'orders-received', partial: 'pages/tv/order_number', locals: { id:, state: }
+    when :prepared
+      broadcast_append_to :tv_orders, target: 'orders-prepared', partial: 'pages/tv/order_number', locals: { id:, state: }
+      broadcast_remove_to :tv_orders, target: "order-number-#{id}-received"
+    when :delivered
+      broadcast_remove_to :tv_orders, target: "order-number-#{id}-prepared"
+    when :cancelled
+      broadcast_remove_to :tv_orders, target: "order-number-#{id}-received"
     end
   end
 end

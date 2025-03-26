@@ -17,6 +17,10 @@ class PagesController < ApplicationController
   def mrshq
   end
 
+  def tv
+    @orders = Order.where(state: %w[received prepared])
+  end
+
   private
 
   def redirect_to_welcome
