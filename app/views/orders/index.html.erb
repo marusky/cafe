@@ -3,9 +3,19 @@
 <%= turbo_stream_from :customer_orders %>
 
 <div id='orders' class='mt-4 space-y-4 mb-20'>
-  <% @orders.each do |order| %>
-    <%= link_to order_path(order, back_path: orders_path), class: 'block' do %>
-      <%= render order %>
+  <% if @orders.none? %>
+    <%= link_to app_path do %>
+      <div class='p-4 text-zinc-500 border border-dashed border-zinc-600 rounded-xl text-center'>
+        Zatiaľ tu žiadna objednávka nie je. 
+        <br />
+        Pre jej vytvorenie si objednaj produkt v menu.
+      </div>
+    <% end %>
+  <% else %>
+    <% @orders.each do |order| %>
+      <%= link_to order_path(order, back_path: orders_path), class: 'block' do %>
+        <%= render order %>
+      <% end %>
     <% end %>
   <% end %>
 </div>
