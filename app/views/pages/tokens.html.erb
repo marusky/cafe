@@ -1,4 +1,4 @@
-<% content_for :title, 'e-žetóny' %>
+<% content_for :title, 'Žetóny' %>
   
 <div data-controller='qr-generator' data-qr-generator-cid-value='<%= current_customer.id %>'>
   <%= form_with data: { action: 'qr-generator#generate:prevent' } do |f| %>
