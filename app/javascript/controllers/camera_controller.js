@@ -5,9 +5,6 @@ export default class extends Controller {
   static targets = ["video", "code", "canvas"]
 
   connect() {
-    this.startCamera()
-
-    this.startListening()
   }
 
   openTokensModal(cid, eur) {
@@ -22,6 +19,8 @@ export default class extends Controller {
   }
 
   async startCamera() {
+    this.startListening()
+
     const constraints = {
       audio: false,
       video: {
@@ -57,6 +56,9 @@ export default class extends Controller {
     const tracks = mediaStream.getTracks();
 
     tracks.forEach(track => track.stop())
+    this.canvasTarget.hidden = true;
+    this.canvasTarget.height = 0;
+    this.canvasTarget.width = 0;
   }
 
   async getMedia(constraints) {
