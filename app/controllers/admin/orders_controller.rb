@@ -20,8 +20,8 @@ class Admin::OrdersController < AdminController
     @order.prepared!
     PushService.send_notification(
       push_subscription: @order.customer.push_subscription,
-      title: "Objednávka ##{@order.id} je hotová!", 
-      body: "Pri vyzdvihnutí povedz heslo #{@order.code}.",
+      title: "Objednávka ##{@order.id} je hotová! 📣",
+      body: "Pri vyzdvihnutí budeš potrebovať kód: #{@order.code}.",
     )
   end
 
@@ -39,7 +39,7 @@ class Admin::OrdersController < AdminController
     service.cancel_order!
     PushService.send_notification(
       push_subscription: @order.customer.push_subscription,
-      title: "Objednávka ##{@order.id} je zrušená.", 
+      title: "Objednávka ##{@order.id} je zrušená. ❌", 
       body: "Asi nám práve niečo došlo. Radi ti však pripravíme to, čo máme.",
     )
   end

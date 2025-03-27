@@ -10,7 +10,7 @@ class Admin::BalancesController < AdminController
 
     PushService.send_notification(
       push_subscription: @customer.push_subscription,
-      title: 'Pribudli ti žetóny!',
+      title: 'Pribudli ti žetóny! 🤩', 
       body: "#{params[:tokens]} žetónov, k tvojim službám."
     )
 
