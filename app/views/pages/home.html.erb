@@ -1,96 +1,98 @@
-<main class='container mx-auto'>
-  <div class='text-lg'>
-    <section class="z-30 pt-10 pb-10 bg-[url('/bg-paper.png')] bg-cover relative">
-      <div class='-z-20 absolute inset-0 bg-gradient-to-t from-zinc-50/0 via-95% via-zinc-50/0 to-zinc-50'></div>
-      <div class='-z-20 absolute inset-0 bg-gradient-to-b from-zinc-50/0 via-95% via-zinc-50/0 to-zinc-50'></div>
-      <div class='px-6 text-center'>
-        <h1 class="text-4xl tracking-tighter font-semibold">
-          kaféem
-        </h1>
-        <p class='mt-8 leading-relaxed text-xl'>
-          Dobroty z kaféem priamo z miesta. 
+<% cache 'home' do %>
+  <main class='container mx-auto'>
+    <div class='text-lg'>
+      <section class="z-30 pt-10 pb-10 bg-[url('/bg-paper.png')] bg-cover relative">
+        <div class='-z-20 absolute inset-0 bg-gradient-to-t from-zinc-50/0 via-95% via-zinc-50/0 to-zinc-50'></div>
+        <div class='-z-20 absolute inset-0 bg-gradient-to-b from-zinc-50/0 via-95% via-zinc-50/0 to-zinc-50'></div>
+        <div class='px-6 text-center'>
+          <h1 class="text-4xl tracking-tighter font-semibold">
+            kaféem
+          </h1>
+          <p class='mt-8 leading-relaxed text-xl'>
+            Dobroty z kaféem priamo z miesta. 
+          </p>
+
+          <div class='mt-12 flex justify-center'>
+            <%= image_tag 'cup-3.png', class: 'w-48' %>
+          </div>
+
+          <div class='mt-14'>
+            <%= render_button "Stiahnuť appku", as: :link, href: welcome_download_path, class: 'bg-neutral-900 w-full' %>
+          </div>
+        </div>
+      </section>
+      <div class='w-full overflow-hidden translate-y-1'>
+        <svg viewBox="0 0 393 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 70H393V62.9027C393 62.9027 357 68.1403 297.5 38.8986C238 9.65687 227 14.8941 216 16.6402C205 18.3863 157 34.5344 116.5 21.8775C76 9.2205 62.6181 -8.73895 0 4.85635V70Z" fill="#fde047"/>
+        </svg>
+      </div>
+      <section class='text-left px-6 bg-yellow-300'>
+        <h2 class="text-3xl tracking-tight font-medium text-neutral-900 -translate-y-3">Ako to funguje?</h2>
+        <p class='mt-4 text-neutral-800 font-light leading-relaxed pr-2'>Objednať si priamo z miesta je úplne jednoduché. Stačí si stiahnuť appku, dobiť žetóny a užívať si rozhovor, kým ti pripravíme, čo si želáš.</p>
+        <div class='mt-10 space-y-8'>
+          <div class='flex'>
+            <div class='flex flex-col items-center mr-6'>
+              <div class='w-10 h-10 text-3xl flex justify-center items-center drop-shadow-md'>🪙</div>
+            </div>
+            <div class=''>
+              <h3 class='font-medium'>E-žetóny</h3>
+              <p class='font-light text-neutral-800 mt-2'>
+                Namiesto toho, aby si za hotovosť dostal klasické žetóny, dobijeme ti e-žetóny. 
+                Tie sú uložené v tvojom telefóne, takže sa o ne nemusíš báť. E-žetóny aj klasické žetóny získaš na tom istom mieste.
+              </p>
+            </div>
+          </div>
+          <div class='flex'>
+            <div class='flex flex-col items-center mr-6'>
+              <div class='w-10 h-10 text-3xl flex justify-center items-center drop-shadow-md'>✉️</div>
+            </div>
+            <div class=''>
+              <h3 class='font-medium'>Objednávka</h3>
+              <p class='font-light text-neutral-800 mt-2'>
+                Pár kliknutiami si vyberieš, na čo máš chuť, a "zaplatíš" priamo v telefóne. 
+                My sa pustíme do práce a pošleme ti upozornenie, keď bude tvoja objednávka hotová.
+              </p>
+            </div>
+          </div>
+          <div class='flex'>
+            <div class='flex flex-col items-center mr-6'>
+              <div class='w-10 h-10 text-3xl flex justify-center items-center drop-shadow-md'>🌭</div>
+            </div>
+            <div class=''>
+              <h3 class='font-medium'>Dobrú chuť!</h3>
+              <p class='font-light text-neutral-800 mt-2'>
+                Môžeš si prísť pre hotovú objednávku. Veríme, že ti bude chutiť.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class='w-full overflow-hidden -translate-y-1'>
+        <svg viewBox="0 0 393 87" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M393 3.09944e-06H0V8.82093C0 8.82093 36 2.31137 95.5 38.6546C155 74.9979 166 68.4887 177 66.3186C188 64.1485 236 44.0786 276.5 59.8094C317 75.5402 330.382 97.8613 393 80.9642V3.09944e-06Z" fill="#fde047"/>
+        </svg>
+
+      </div>
+      <section class='px-6 mt-10 -translate-y-2'>
+        <h2 class="text-3xl tracking-tight font-medium -translate-y-3">Už sa to nesie</h2>
+        <div class='mt-6 px-4'>
+          <div class='w-3/4 h-7 bg-gradient-to-r from-gray-950 to-gray-700 rounded-full px-3 flex justify-end items-center text-gray-500'>
+            <div>1x</div>
+          </div>
+          <div class='mt-2 h-7 bg-gradient-to-r from-yellow-300 to-orange-300 rounded-full px-3 flex justify-end items-center text-white'>
+            <div class='font-semibold'>1.3x</div>
+          </div>
+          <div class='text-sm text-gray-600 mt-2 text-center'>Obyčajný hot-dog vs. hot-dog objednaný cez appku</div>
+        </div>
+        <p class='font-light text-gray-800 mt-6'>
+          Hot-dog objednaný cez kaféem appku chutí ľuďom v priemere 1.3x viac.
+          Dobre, to sme si vymysleli. No čo ak je to naozaj tak?
         </p>
-
-        <div class='mt-12 flex justify-center'>
-          <%= image_tag 'cup-3.png', class: 'w-48' %>
+        <div class='mt-10 mb-10'>
+          <%= render_button "Idem riešim", as: :link, href: welcome_download_path, class: 'bg-neutral-900 w-full' %>
         </div>
-
-        <div class='mt-14'>
-          <%= render_button "Stiahnuť appku", as: :link, href: welcome_download_path, class: 'bg-neutral-900 w-full' %>
-        </div>
-      </div>
-    </section>
-    <div class='w-full overflow-hidden translate-y-1'>
-      <svg viewBox="0 0 393 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 70H393V62.9027C393 62.9027 357 68.1403 297.5 38.8986C238 9.65687 227 14.8941 216 16.6402C205 18.3863 157 34.5344 116.5 21.8775C76 9.2205 62.6181 -8.73895 0 4.85635V70Z" fill="#fde047"/>
-      </svg>
+      </section>
+      <section class='text-sm text-gray-600 mt-2 mb-5 text-center'>Made with &lt;3 by <span class='text-blue-500'><%= link_to 'mrshq.sk', 'https://mrshq.sk' %></span></section>
     </div>
-    <section class='text-left px-6 bg-yellow-300'>
-      <h2 class="text-3xl tracking-tight font-medium text-neutral-900 -translate-y-3">Ako to funguje?</h2>
-      <p class='mt-4 text-neutral-800 font-light leading-relaxed pr-2'>Objednať si priamo z miesta je úplne jednoduché. Stačí si stiahnuť appku, dobiť žetóny a užívať si rozhovor, kým ti pripravíme, čo si želáš.</p>
-      <div class='mt-10 space-y-8'>
-        <div class='flex'>
-          <div class='flex flex-col items-center mr-6'>
-            <div class='w-10 h-10 text-3xl flex justify-center items-center drop-shadow-md'>🪙</div>
-          </div>
-          <div class=''>
-            <h3 class='font-medium'>E-žetóny</h3>
-            <p class='font-light text-neutral-800 mt-2'>
-              Namiesto toho, aby si za hotovosť dostal klasické žetóny, dobijeme ti e-žetóny. 
-              Tie sú uložené v tvojom telefóne, takže sa o ne nemusíš báť. E-žetóny aj klasické žetóny získaš na tom istom mieste.
-            </p>
-          </div>
-        </div>
-        <div class='flex'>
-          <div class='flex flex-col items-center mr-6'>
-            <div class='w-10 h-10 text-3xl flex justify-center items-center drop-shadow-md'>✉️</div>
-          </div>
-          <div class=''>
-            <h3 class='font-medium'>Objednávka</h3>
-            <p class='font-light text-neutral-800 mt-2'>
-              Pár kliknutiami si vyberieš, na čo máš chuť, a "zaplatíš" priamo v telefóne. 
-              My sa pustíme do práce a pošleme ti upozornenie, keď bude tvoja objednávka hotová.
-            </p>
-          </div>
-        </div>
-        <div class='flex'>
-          <div class='flex flex-col items-center mr-6'>
-            <div class='w-10 h-10 text-3xl flex justify-center items-center drop-shadow-md'>🌭</div>
-          </div>
-          <div class=''>
-            <h3 class='font-medium'>Dobrú chuť!</h3>
-            <p class='font-light text-neutral-800 mt-2'>
-              Môžeš si prísť pre hotovú objednávku. Veríme, že ti bude chutiť.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <div class='w-full overflow-hidden -translate-y-1'>
-      <svg viewBox="0 0 393 87" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M393 3.09944e-06H0V8.82093C0 8.82093 36 2.31137 95.5 38.6546C155 74.9979 166 68.4887 177 66.3186C188 64.1485 236 44.0786 276.5 59.8094C317 75.5402 330.382 97.8613 393 80.9642V3.09944e-06Z" fill="#fde047"/>
-      </svg>
-
-    </div>
-    <section class='px-6 mt-10 -translate-y-2'>
-      <h2 class="text-3xl tracking-tight font-medium -translate-y-3">Už sa to nesie</h2>
-      <div class='mt-6 px-4'>
-        <div class='w-3/4 h-7 bg-gradient-to-r from-gray-950 to-gray-700 rounded-full px-3 flex justify-end items-center text-gray-500'>
-          <div>1x</div>
-        </div>
-        <div class='mt-2 h-7 bg-gradient-to-r from-yellow-300 to-orange-300 rounded-full px-3 flex justify-end items-center text-white'>
-          <div class='font-semibold'>1.3x</div>
-        </div>
-        <div class='text-sm text-gray-600 mt-2 text-center'>Obyčajný hot-dog vs. hot-dog objednaný cez appku</div>
-      </div>
-      <p class='font-light text-gray-800 mt-6'>
-        Hot-dog objednaný cez kaféem appku chutí ľuďom v priemere 1.3x viac.
-        Dobre, to sme si vymysleli. No čo ak je to naozaj tak?
-      </p>
-      <div class='mt-10 mb-10'>
-        <%= render_button "Idem riešim", as: :link, href: welcome_download_path, class: 'bg-neutral-900 w-full' %>
-      </div>
-    </section>
-    <section class='text-sm text-gray-600 mt-2 mb-5 text-center'>Made with &lt;3 by <span class='text-blue-500'><%= link_to 'mrshq.sk', 'https://mrshq.sk' %></span></section>
-  </div>
-</main>
+  </main>
+<% end %>
