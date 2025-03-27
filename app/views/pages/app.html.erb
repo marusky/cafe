@@ -3,7 +3,7 @@
 <div id='order-item-modal'>
 </div>
 
-<div data-controller='order-item-modal' class='<%= @orders_in_progress.size == 1 ? 'mb-40' : 'mb-16' %>'>
+<div data-controller='order-item-modal' class='<%= @orders_in_progress.size >= 1 ? 'mb-40' : 'mb-16' %>'>
   <% @categories.each do |category| %>
     <div class='bg-zinc-50/90 z-10 text-xl font-semibold flex justify-between py-3 sticky top-16 backdrop-blur'>
       <%= category.title %>
