@@ -1,7 +1,7 @@
 <% content_for :title, 'mrshq ~ we make stuff' %>
 
 <% cache 'mrshq' do %>
-  <div class='h-screen bg-zinc-950 text-zinc-50'>
+  <div class='h-screen bg-zinc-950 text-zinc-50' data-controller='mrshq'>
     <div class='mx-auto container h-screen px-6 flex flex-col justify-center md:items-center'>
       <div class='text-5xl tracking-tight font-medium'>
         We make stuff.
@@ -22,7 +22,3 @@
     </div>
   </div>
 <% end %>
-
-<script>
-  document.body.style.backgroundColor = '#09090b'
-</script>
