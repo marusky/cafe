@@ -19,7 +19,6 @@ export default class extends Controller {
   }
 
   async startCamera() {
-    this.startListening()
 
     const constraints = {
       audio: false,
@@ -33,25 +32,13 @@ export default class extends Controller {
     await this.getMedia(constraints)
   }
 
-  startListening() {
-    this.listener = this.beforeVisitHandler.bind(this);
-    document.addEventListener("turbo:before-visit", this.listener);
-  }
-
-  beforeVisitHandler() {
-    this.stopCamera();
-    this.stopListening();
-  }
-
-  stopListening() {
-    if (this.listener) {
-      document.removeEventListener("turbo:before-visit", this.listener);
-      this.listener = null; // Clear reference
-    }
-  }
-
   stopCamera() {
     const video = document.querySelector('video');
+
+    if (video === null || video === undefined) {
+      return;
+    };
+
     const mediaStream = video.srcObject;
     const tracks = mediaStream.getTracks();
 
@@ -98,6 +85,7 @@ export default class extends Controller {
         const eur = parsedUrl.searchParams.get("eur");
         
         this.openTokensModal(cid, eur)
+        this.stopCamera()
       } else {
         requestAnimationFrame(this.tick.bind(this));
       }

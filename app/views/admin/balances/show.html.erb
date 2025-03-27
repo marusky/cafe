@@ -1,7 +1,7 @@
 <% content_for :title, 'Žetóny' %>
 
 
-<div id="qr-scanner" data-controller='camera'>
+<div id="qr-scanner" data-controller='camera' data-action='turbo:before-visit@document->camera#stopCamera' class='mb-20'>
   <video data-camera-target='video' hidden></video>
   <div class='flex justify-center relative'>
     <div class='z-10 absolute inset-0 flex justify-center items-center'>
