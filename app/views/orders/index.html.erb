@@ -2,7 +2,7 @@
 
 <%= turbo_stream_from :customer_orders %>
 
-<div id='orders' class='mt-4 space-y-4'>
+<div id='orders' class='mt-4 space-y-4 mb-20'>
   <% @orders.each do |order| %>
     <%= link_to order_path(order, back_path: orders_path), class: 'block' do %>
       <%= render order %>

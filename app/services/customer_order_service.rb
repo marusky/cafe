@@ -16,6 +16,10 @@ class CustomerOrderService
     @order.unavailable_order_items.delete_all
   end
 
+  def empty_order?
+    @order.order_items.none?
+  end
+
   def any_product_price_has_changed?
     order_items_with_changed_product_price.present?
   end

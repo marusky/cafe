@@ -42,4 +42,10 @@ class OrderItemsController < ApplicationController
   def order_item_params
     params.expect(order_item: [:amount, :product_id])
   end
+
+  def authorize_check
+    return if @order_item.order.customer == current_customer 
+
+    redirect_to app_url, alert: '"...čo ťa do toho?" (Ján 21:22)'
+  end
 end

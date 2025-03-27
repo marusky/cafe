@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   layout "app"
 
   before_action :set_order, except: :index
+  before_action :authorize_check, except: :index
 
   def index
     @orders = current_customer.orders.includes(:order_items).order(created_at: :desc)
@@ -38,6 +39,13 @@ class OrdersController < ApplicationController
       return render :show, status: :unprocessable_entity
     end
 
+    if service.empty_order?
+      set_order_items
+
+      flash.now[:alert] = 'Objednávka je prázdna.'
+      return render :show, status: :unprocessable_entity
+    end
+
     if service.any_product_price_has_changed?
       service.update_order_items_with_changed_product_price!
       set_order_items
@@ -64,5 +72,11 @@ class OrdersController < ApplicationController
 
   def set_order_items
     @order_items = @order.order_items
+  end
+
+  def authorize_check
+    return if @order.customer == current_customer 
+
+    redirect_to app_url, alert: '"...čo ťa do toho?" (Ján 21:22)'
   end
 end
