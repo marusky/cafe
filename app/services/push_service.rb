@@ -1,5 +1,7 @@
 class PushService
   def self.send_notification(push_subscription:, title:, body:, icon: nil)
+    return if push_subscription.nil?
+
     WebPush.payload_send(
       endpoint: push_subscription.endpoint,
       message: { title:, options: { body: } }.to_json,
@@ -15,8 +17,6 @@ class PushService
 
   def self.sunday_notification
     Customer.where(balance: 1..).each do |customer|
-      next unless customer.push_subscription
-
       send_notification(
         push_subscription: customer.push_subscription,
         title: 'Posledná šanca minúť e-žetóny!',

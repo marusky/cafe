@@ -22,7 +22,7 @@ class Admin::OrdersController < AdminController
       push_subscription: @order.customer.push_subscription,
       title: "Objednávka ##{@order.id} je hotová! 📣",
       body: "Pri vyzdvihnutí budeš potrebovať kód: #{@order.code}.",
-    )
+    ) if @order.customer.push_subscription
   end
 
   def deliver
