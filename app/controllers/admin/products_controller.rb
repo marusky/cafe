@@ -15,7 +15,7 @@ class Admin::ProductsController < AdminController
     @product = Product.new(product_params)
 
     if @product.save
-      redirect_to @product, notice: "Produkt bol vytvorený."
+      redirect_to @product.category, notice: "Produkt bol vytvorený."
     else
       render :new, status: :unprocessable_entity
     end

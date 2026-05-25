@@ -1,6 +1,6 @@
 class CreatePushSubscriptions < ActiveRecord::Migration[8.0]
   def change
-    create_table :push_subscriptions, id: false do |t|
+    create_table :push_subscriptions do |t|
       t.string :endpoint
       t.string :p256dh
       t.string :auth

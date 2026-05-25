@@ -10,9 +10,10 @@ class Product < ApplicationRecord
   end
 
   validates :title, presence: true
-  validates :price, numericality: { 
-    only_integer: true, greater_than_or_equal_to: MINIMAL_PRICE 
+  validates :price, numericality: {
+    only_integer: true, greater_than_or_equal_to: MINIMAL_PRICE
   }
 
   scope :available, -> { where(is_available: true) }
+  scope :unavailable, -> { where(is_available: false) }
 end

@@ -8,4 +8,15 @@ class Customer < ApplicationRecord
 
   has_one :push_subscription, dependent: :delete
   has_many :orders
+
+  def send_notification(title:, body:)
+    return unless subscribed?
+
+    push_subscription.push_notifications.create!(title: title, body: body)
+  end
+
+  private
+    def subscribed?
+      push_subscription.present?
+    end
 end

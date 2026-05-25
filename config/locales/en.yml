@@ -28,4 +28,10 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  order:
+    alerts:
+      cafe_closed: "TAM café momentálne neprijíma nové objednávky."
+      unavailable_products: "To bolo tesné! Niektorý z našich produktov už, žiaľ, nie je dostupný."
+      empty: "Objednávka je prázdna."
+      prices_diverged: "Niektorý z produktov, ktoré máš v objednávke, zmenil svoju cenu. Pred potvrdením objednávky si to pre istotu skontroluj."
+      insufficient_balance: "Na túto objednávku nemáš dostatok žetónov."

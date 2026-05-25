@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_25_175556) do
+ActiveRecord::Schema[8.0].define(version: 2026_05_24_142203) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,13 +39,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_25_175556) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "admins", force: :cascade do |t|
+  create_table "cafes", force: :cascade do |t|
     t.string "name", null: false
     t.string "password_digest", null: false
+    t.boolean "open", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "accepting_orders"
-    t.index ["name"], name: "index_admins_on_name", unique: true
   end
 
   create_table "categories", force: :cascade do |t|
@@ -93,7 +92,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_25_175556) do
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
-  create_table "push_subscriptions", id: false, force: :cascade do |t|
+  create_table "push_notifications", force: :cascade do |t|
+    t.string "title"
+    t.string "body"
+    t.integer "push_subscription_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["push_subscription_id"], name: "index_push_notifications_on_push_subscription_id"
+  end
+
+  create_table "push_subscriptions", force: :cascade do |t|
     t.string "endpoint"
     t.string "p256dh"
     t.string "auth"
@@ -104,12 +112,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_25_175556) do
   end
 
   create_table "sessions", force: :cascade do |t|
-    t.integer "admin_id", null: false
+    t.integer "cafe_id", null: false
     t.string "ip_address"
     t.string "user_agent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["admin_id"], name: "index_sessions_on_admin_id"
+    t.index ["cafe_id"], name: "index_sessions_on_cafe_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -118,6 +126,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_25_175556) do
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "customers"
   add_foreign_key "products", "categories"
+  add_foreign_key "push_notifications", "push_subscriptions"
   add_foreign_key "push_subscriptions", "customers"
-  add_foreign_key "sessions", "admins"
+  add_foreign_key "sessions", "cafes"
 end

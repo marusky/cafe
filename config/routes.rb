@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   constraints subdomain: "team.kafeem" do
     scope module: :admin do
       resource :session, only: [:create, :destroy]
-      put 'toggle_accepting_orders', to: 'admins#toggle_accepting_orders'
+      put 'toggle_open_cafe', to: 'admins#toggle_open_cafe'
 
       resources :orders, only: :index do
         member do
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
-  constraints subdomain: "kafeem" do
+  constraints -> (req) { true } do
     get "welcome/download"
     get "welcome/customer"
     get "welcome/permissions"
@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     get "tokens", to: "pages#tokens"
 
     resources :order_items, only: [:new, :create, :update, :destroy]
-    resources :orders, only: [:index, :show, :edit, :update] do
+    resources :orders, only: [:index, :show, :update] do
       member do
         patch "finalize", to: "orders#finalize"
       end
@@ -50,10 +50,10 @@ Rails.application.routes.draw do
     resources :customers, only: [:create]
     post "push_subscriptions", to: "push_subscriptions#create"
     get 'tv', to: 'pages#tv'
-    
+
     get "/", to: "pages#home"
   end
-  
+
   get "manifest" => "pwa#manifest", :as => :pwa_manifest
   get "service-worker" => "rails/pwa#service_worker", :as => :pwa_service_worker
 

@@ -7,12 +7,12 @@ export default class extends Controller {
     const csrfToken = document.querySelector("[name='csrf-token']").content
 
     const body = JSON.stringify({
-      admin: {
-        accepting_orders: state === 'checked',
+      cafe: {
+        open: state === 'checked',
       },
     })
 
-    fetch(`${location.origin}/toggle_accepting_orders`, {
+    fetch(`${location.origin}/toggle_open_cafe`, {
       method: "PUT",
       headers: {
         Accept: "text/vnd.turbo-stream.html",

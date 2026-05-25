@@ -18,7 +18,7 @@
   <% if order.note.present? %>
     <div class='pt-2 border-t border-zinc-200'>
       <strong class='font-semibold'>Poznámka:</strong>
-      <%= order.note %>
+      <%= simple_format order.note %>
     </div>
   <% end %>
   <div class='mt-4'>
