@@ -1,4 +1,6 @@
 class PushSubscription < ApplicationRecord
+  has_paper_trail
+
   validates :endpoint, :p256dh, :auth, presence: true
 
   belongs_to :customer

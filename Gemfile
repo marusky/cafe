@@ -72,3 +72,4 @@ end
 
 gem "shadcn-ui", "~> 0.0.15"
 gem "font-awesome-sass"
+gem "paper_trail"

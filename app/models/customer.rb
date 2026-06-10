@@ -1,5 +1,5 @@
 class Customer < ApplicationRecord
-  # self.primary_key = "id"
+  has_paper_trail
 
   after_update_commit -> { broadcast_update_to :balance, target: "balance-#{id}", html: balance }
 
