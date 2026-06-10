@@ -1,5 +1,6 @@
 class OrderItemsController < ApplicationController
   before_action :set_order_item, only: [:update, :destroy]
+  before_action :authorize_check, only: [:update, :destroy]
 
   def new
     @product = Product.find(params[:product_id])
@@ -15,9 +16,9 @@ class OrderItemsController < ApplicationController
     if service.order_item.valid?
       service.call
 
-      redirect_to app_url, notice: 'Produkt bol pridaný.'
+      redirect_to app_url, notice: "Produkt bol pridaný."
     else
-      redirect_to app_url, alert: 'Hups! Niečo sa pokazilo!'
+      redirect_to app_url, alert: "Hups! Niečo sa pokazilo!"
     end
   end
 
@@ -44,7 +45,7 @@ class OrderItemsController < ApplicationController
   end
 
   def authorize_check
-    return if @order_item.order.customer == current_customer 
+    return if @order_item.order.customer == current_customer
 
     redirect_to app_url, alert: '"...čo ťa do toho?" (Ján 21:22)'
   end

@@ -19,7 +19,7 @@
       -
     </div>
     <div>
-      <%= f.number_field 'order_items[amount]', value: order_item.amount, class: 'w-12 bg-zinc-50 border-none text-center', data: { order_item_target: 'amount', order_item_id: order_item.id } %>
+      <%= f.number_field 'order_items[amount]', value: order_item.amount, class: 'w-12 bg-zinc-50 border-none text-center', data: { action: 'order-item#manual', order_item_target: 'amount', order_item_id: order_item.id } %>
     </div>
     <div class='pl-2 pr-4' data-action='click->order-item#plus'>
       +

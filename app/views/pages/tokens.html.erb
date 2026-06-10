@@ -1,20 +1,28 @@
 <% content_for :title, 'Žetóny' %>
-  
+
 <div data-controller='qr-generator' data-qr-generator-cid-value='<%= current_customer.id %>'>
-  <%= form_with data: { action: 'qr-generator#generate:prevent' } do |f| %>
-    <%= f.label :eur, 'Koľko eur si chceš vymeniť?', class: 'block text-zinc-900 font-medium' %>
-    <%= f.number_field :eur, autofocus: true, required: true, min: 1, step: 1, inputmode: :numberic, data: { qr_generator_target: 'eur' }, class: 'rounded-lg mt-2 bg-zinc-100 border border-zinc-300 px-5 py-2.5 w-full focus:ring-0 focus:border-blue-300 focus:bg-zinc-50 transition duration-150' %>
-    <%= f.submit 'Generuj QR kód', class: 'mt-6 w-full text-center py-4 rounded-xl bg-blue-500 cursor-pointer text-zinc-50 font-semibold' %>
+  <%= form_with model: Transaction.new, data: { turbo: false, action: 'qr-generator#generate' } do |f| %>
+    <%= f.label :amount, 'Koľko eur si chceš vymeniť?', class: 'block text-zinc-900 font-medium' %>
+    <%= f.number_field :amount, autofocus: true, required: true, min: 1, step: 1, inputmode: :numeric, data: { qr_generator_target: 'eur' }, class: 'rounded-lg mt-2 bg-zinc-100 border border-zinc-300 px-5 py-2.5 w-full focus:ring-0 focus:border-blue-300 focus:bg-zinc-50 transition duration-150' %>
+    <%= button_tag type: :submit, class: 'mt-6 w-full text-center py-4 rounded-xl bg-blue-500 cursor-pointer text-zinc-50 font-semibold' do %>
+      <%= icon 'fa-solid', 'credit-card', class: 'mr-1' %> Prevod z účtu
+    <% end %>
+    <%= button_tag type: :button, data: { action: 'qr-generator#generate' }, class: 'mt-4 w-full text-center py-4 rounded-xl bg-zinc-100 border border-zinc-200 cursor-pointer text-zinc-500 font-semibold' do %>
+      <%= icon 'fa-solid', 'money-bill', class: 'mr-1' %> Platba v hotovosti
+    <% end %>
   <% end %>
 
   <div class='flex mt-6 justify-center'>
     <canvas data-qr-generator-target='qrCode' class='hidden'></canvas>
   </div>
 
-  <div>
-    <div class='mt-3 text-center text-zinc-600'>
-      Vygenerovaný QR kód ukáž nášmu tímu na stanovisku so žetónmi.
-      My od teba vezmeme hotovosť, naskenujeme tvoj kód a dobijeme ti <span class='text-nowrap'>e-žetóny</span>.
+  <div class="pb-24">
+    <div class='mt-3 text-center text-zinc-500'>
+      Za e-žetóny môžeš zaplatiť na stanovisku so žetónmi priamo z telefónu prevodom na účet alebo v hotovosti.
+      Akonáhle overíme, že sme platbu prijali, naskenujeme tvoj QR kód a dobijeme ti <span class='text-nowrap'>e-žetóny</span>.
+    </div>
+    <div class='mt-3 text-center text-zinc-500'>
+      Na diaľku ti žetóny dobiť nevieme, keďže potrebujeme pri dobíjaní naskenovať tvoj QR kód.
     </div>
   </div>
 </div>

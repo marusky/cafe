@@ -1,1 +1,4 @@
 <%= turbo_stream.remove dom_id(@order_item) %>
+<%= turbo_stream.update 'order-total-sum' do %>
+  <%= humanized_price @order_item.order.total_sum %>
+<% end %>

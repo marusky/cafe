@@ -39,7 +39,6 @@ Rails.application.routes.draw do
 
     get "app", to: "pages#app"
     get "tokens", to: "pages#tokens"
-    get "tokens-payment", to: "pages#tokens_payment"
 
     resources :transactions, only: :create
 

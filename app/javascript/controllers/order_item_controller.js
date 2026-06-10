@@ -11,11 +11,11 @@ export default class extends Controller {
   minus() {
     const amount = parseInt(this.amountTarget.value) - 1
     const orderItemId = this.amountTarget.dataset.orderItemId
-    
-    if (amount > 0) {
-      this.amountTarget.value = amount
-      this.updateSum(amount)
 
+    this.amountTarget.value = amount
+    this.updateSum(amount)
+
+    if (amount > 0) {
       if (orderItemId) {
         void this.updateAmount(orderItemId, amount)
       }
@@ -33,11 +33,39 @@ export default class extends Controller {
         .then(html => Turbo.renderStreamMessage(html))
     }
   }
-  
+
+  manual() {
+    if (this.amountTarget.value === "") return;
+
+    const amount = parseInt(this.amountTarget.value)
+    const orderItemId = this.amountTarget.dataset.orderItemId
+
+    this.amountTarget.value = amount
+    this.updateSum(amount)
+
+    if (amount > 0) {
+      if (orderItemId) {
+        void this.updateAmount(orderItemId, amount)
+      }
+    } else {
+      const csrfToken = document.querySelector("[name='csrf-token']").content
+
+      fetch(`${location.origin}/order_items/${orderItemId}`, {
+        method: "DELETE",
+        headers: {
+          Accept: "text/vnd.turbo-stream.html",
+          "X-CSRF-Token": csrfToken,
+        },
+      })
+        .then(r => r.text())
+        .then(html => Turbo.renderStreamMessage(html))
+    }
+  }
+
   plus() {
     const amount = parseInt(this.amountTarget.value) + 1
     const orderItemId = this.amountTarget.dataset.orderItemId
-    
+
     this.amountTarget.value = amount
     this.updateSum(amount)
 
@@ -82,7 +110,7 @@ export default class extends Controller {
   humanizedSum(sum) {
     if (sum === 1) {
       return `${sum} žetón`
-    } else if (sum < 5) {
+    } else if (sum > 1 && sum < 5) {
       return `${sum} žetóny`
     } else {
       return `${sum} žetónov`
