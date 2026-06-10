@@ -12,3 +12,4 @@ pin "@stimulus-components/auto-submit", to: "@stimulus-components--auto-submit.j
 pin "@stimulus-components/notification", to: "@stimulus-components--notification.js" # @3.0.0
 pin "stimulus-use" # @0.52.3
 pin "pulltorefreshjs" # @0.1.22
+pin "pwa-install-bundle", to: "https://cdn.jsdelivr.net/npm/@khmyznikov/pwa-install@0.6.3/dist/pwa-install.bundle.min.js"

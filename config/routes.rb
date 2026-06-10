@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
-  constraints subdomain: "tamcafe" do
+    # constraints subdomain: "tamcafe" do
     get "welcome/download"
     get "welcome/customer"
     get "welcome/permissions"
@@ -55,7 +55,7 @@ Rails.application.routes.draw do
     get "tv", to: "pages#tv"
 
     get "/", to: "pages#home"
-  end
+  # end
 
   get "manifest" => "pwa#manifest", :as => :pwa_manifest
   get "service-worker" => "rails/pwa#service_worker", :as => :pwa_service_worker
