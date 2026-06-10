@@ -1,4 +1,6 @@
-<div id='<%= dom_id order %>' class='bg-white shadow-lg shadow-zinc-200 border border-zinc-200 rounded-xl p-4'>
+<%= turbo_stream_from order %>
+
+<div class='bg-white shadow-lg shadow-zinc-200 border border-zinc-200 rounded-xl p-4'>
   <div class='flex justify-between items-center relative'>
     <div>
       <h3 class='text-2xl font-medium'>#<%= order.id %></h3>

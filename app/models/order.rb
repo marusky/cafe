@@ -7,7 +7,7 @@ class Order < ApplicationRecord
 
   before_create :generate_code
 
-  scope :in_progress, -> { where(state: %w[finalized received prepared]).order(:created_at) }
+  scope :in_progress, -> { where(state: %w[open finalized received prepared]).order(:created_at) }
   scope :done, -> { where(state: %w[delivered canceled]).order(created_at: :desc) }
   scope :filtered_by_state, ->(state) { state == "done" ? done : in_progress }
 
@@ -27,6 +27,6 @@ class Order < ApplicationRecord
   private
 
   def generate_code
-    self.code = ('0'..'9').to_a.shuffle.first(4).join('')
+    self.code = ("0".."9").to_a.shuffle.first(4).join("")
   end
 end

@@ -14,6 +14,10 @@ class PagesController < ApplicationController
     render layout: "app"
   end
 
+  def tokens_payment
+    render layout: "app"
+  end
+
   def mrshq
   end
 

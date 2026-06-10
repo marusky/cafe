@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   constraints subdomain: "team.kafeem" do
     scope module: :admin do
       resource :session, only: [:create, :destroy]
-      put 'toggle_open_cafe', to: 'admins#toggle_open_cafe'
+      put "toggle_open_cafe", to: "cafes#toggle_open_cafe"
 
       resources :orders, only: :index do
         member do
@@ -32,13 +32,16 @@ Rails.application.routes.draw do
     end
   end
 
-  constraints -> (req) { true } do
+  constraints ->(req) { true } do
     get "welcome/download"
     get "welcome/customer"
     get "welcome/permissions"
 
     get "app", to: "pages#app"
     get "tokens", to: "pages#tokens"
+    get "tokens-payment", to: "pages#tokens_payment"
+
+    resources :transactions, only: :create
 
     resources :order_items, only: [:new, :create, :update, :destroy]
     resources :orders, only: [:index, :show, :update] do
@@ -49,7 +52,7 @@ Rails.application.routes.draw do
 
     resources :customers, only: [:create]
     post "push_subscriptions", to: "push_subscriptions#create"
-    get 'tv', to: 'pages#tv'
+    get "tv", to: "pages#tv"
 
     get "/", to: "pages#home"
   end

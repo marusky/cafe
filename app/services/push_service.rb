@@ -20,7 +20,7 @@ class PushService
       send_notification(
         push_subscription: customer.push_subscription,
         title: 'Posledná šanca minúť e-žetóny!',
-        body: 'Ešte ti ich tu zopár ostalo a Kaféem je otvorené už len dnes.'
+        body: 'Ešte ti ich tu zopár ostalo a TAMcafé je otvorené už len dnes.'
       )
     end
   end

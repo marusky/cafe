@@ -1,8 +1,5 @@
 <% content_for :title, 'Objednávky' %>
-
-<% unless params[:state] == 'done' %>
-  <%= turbo_stream_from :orders %>
-<% end %>
+<%= turbo_stream_from :orders %>
 
 <div class='flex gap-2'>
   <%= link_to url_for({ state: :in_progress }), class: "#{in_progress_tab_class} px-4 py-2.5 rounded-full" do %>
@@ -14,7 +11,5 @@
 </div>
 
 <div id='orders' class='mt-4 space-y-4 mb-20'>
-  <% @orders.each do |order| %>
-    <%= render order %>
-  <% end %>
+  <%= render @orders %>
 </div>

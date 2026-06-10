@@ -10,7 +10,7 @@
       <%= link_to tokens_path do %>
         <%= turbo_stream_from :balance %>
         <div class='font-medium'>
-          <span id="balance-<%= current_customer.id %>">
+          <span id="balance-<%= current_customer.id %>" data-turbo-permanent>
             <%= current_customer.balance %>
           </span>
           <%= icon 'fa-solid', 'coins', class: 'ml-1' %>

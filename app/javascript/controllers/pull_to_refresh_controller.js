@@ -20,7 +20,9 @@ export default class extends Controller {
       instructionsReleaseToRefresh: 'Pusti',
       instructionsRefreshing: 'Obnovujem',
       onRefresh() {
-        Turbo.visit(window.location)
+        Turbo.visit(window.location.href, {
+          action: "replace"
+        })
       }
     });
   }

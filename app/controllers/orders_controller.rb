@@ -19,11 +19,9 @@ class OrdersController < ApplicationController
   def finalize
     @order.finalize
 
-    if @order.errors.any?
-      flash.now[:alert] = @order.errors.full_messages.first
-      set_order_items
-      render :show, status: :unprocessable_entity
-    end
+    flash[:alert] = @order.errors.full_messages.first if @order.errors.any?
+
+    redirect_to @order
   end
 
   private

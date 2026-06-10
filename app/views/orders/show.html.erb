@@ -5,8 +5,8 @@
   <% end %>
 <% end %>
 
-<%= turbo_stream_from :order %>
+<%= turbo_stream_from @order %>
 
-<div id='<%= dom_id @order%>'>
+<div data-controller="visibility-refresh">
   <%= render "orders/states/#{@order.state}", order: @order %>
 </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Kaféem admin" %></title>
+    <title><%= content_for(:title) || "TAMcafé admin" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -21,6 +21,8 @@
     <%# Includes all stylesheet files in app/views/stylesheets %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
+    <%= yield :head %>
     <%= javascript_importmap_tags %>
   </head>
 

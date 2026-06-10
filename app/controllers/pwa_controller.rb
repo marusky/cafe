@@ -1,10 +1,10 @@
 class PwaController < ApplicationController
   def manifest
     if request.subdomain.include? 'team'
-      @name = 'Kaféem Admin'
+      @name = 'TAMcafé Admin'
       @root = '/orders'
     else
-      @name = 'Kaféem'
+      @name = 'TAMcafé'
       @root = '/app'
     end
   end

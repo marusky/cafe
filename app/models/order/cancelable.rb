@@ -21,5 +21,5 @@ module Order::Cancelable
         canceled!
         customer.update!(balance: customer.balance + total_sum)
       end
-  end
+    end
 end
