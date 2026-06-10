@@ -7,7 +7,7 @@ image: mrshq/kafeem
 # Deploy to these servers.
 servers:
   web:
-    - mrshq.sk
+    - 167.233.49.61
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -19,13 +19,11 @@ servers:
 # Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
 proxy:
   ssl: true
-  hosts: 
-    - mrshq.sk
-    - www.mrshq.sk
-    - kafeem.mrshq.sk
-    - www.kafeem.mrshq.sk
-    - team.kafeem.mrshq.sk
-    - www.team.kafeem.mrshq.sk
+  hosts:
+    - tamcafe.mrshq.sk
+    - www.tamcafe.mrshq.sk
+    - team.tamcafe.mrshq.sk
+    - www.team.tamcafe.mrshq.sk
 
 # Credentials for your image host.
 registry:

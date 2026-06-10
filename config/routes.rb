@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  constraints subdomain: "team.kafeem" do
+  constraints subdomain: "team.tamcafe" do
     scope module: :admin do
       resource :session, only: [:create, :destroy]
       put "toggle_open_cafe", to: "cafes#toggle_open_cafe"
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
-  constraints ->(req) { true } do
+  constraints subdomain: "tamcafe" do
     get "welcome/download"
     get "welcome/customer"
     get "welcome/permissions"
