@@ -1,9 +1,7 @@
 <% cache 'home' do %>
-  <main class='container mx-auto'>
-    <div class='text-lg'>
-      <section class="z-30 pt-10 pb-10 bg-[url('/bg-paper.png')] bg-cover relative">
-        <div class='-z-20 absolute inset-0 bg-gradient-to-t from-zinc-50/0 via-95% via-zinc-50/0 to-zinc-50'></div>
-        <div class='-z-20 absolute inset-0 bg-gradient-to-b from-zinc-50/0 via-95% via-zinc-50/0 to-zinc-50'></div>
+  <main data-controller="home" class='bg-[#FAF2E6]'>
+    <div class='text-lg container mx-auto'>
+      <section class="z-30 pt-10 pb-10 bg-cover relative">
         <div class='px-6 text-center'>
           <h1 class="text-4xl tracking-tighter font-semibold">
             TAMcafé
@@ -13,7 +11,7 @@
           </p>
 
           <div class='mt-12 flex justify-center'>
-            <%= image_tag 'cup-3.png', class: 'w-48' %>
+            <%= image_tag 'new-cup.png', class: 'w-full' %>
           </div>
 
           <div class='mt-14'>
@@ -92,7 +90,7 @@
           <%= render_button "Idem riešim", as: :link, href: welcome_download_path, class: 'bg-neutral-900 w-full' %>
         </div>
       </section>
-      <section class='text-sm text-gray-600 mt-2 mb-5 text-center'>Made with &lt;3 by <span class='text-blue-500'><%= link_to 'mrshq.sk', 'https://mrshq.sk' %></span></section>
+      <section class='text-sm text-gray-600 mt-2 pb-5 text-center'>Made with &lt;3 by <span class='text-blue-500'><%= link_to 'mrshq.sk', 'https://mrshq.sk' %></span></section>
     </div>
   </main>
 <% end %>
