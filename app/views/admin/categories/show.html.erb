@@ -23,7 +23,7 @@
   <% end %>
 <% end %>
 
-<div class='divide-y divide-zinc-200'>
+<div class='divide-y divide-zinc-200 pb-20'>
   <% @category.products.each do |product| %>
     <%= link_to product, class: 'block' do %>
       <%= render 'admin/products/product', product: product %>
