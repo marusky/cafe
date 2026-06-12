@@ -1,7 +1,7 @@
 <% cache "#{@product}_modal" do %>
-  <div class='z-20 fixed inset-0 bg-zinc-800/30 backdrop-blur-sm' data-controller='order-item'>
+  <div class='z-50 fixed inset-0 bg-zinc-800/30 backdrop-blur-sm' data-controller='order-item'>
     <div class='h-screen px-6 flex justify-center items-center' data-action='click->order-item#close'>
-      <div class='w-full bg-zinc-50 rounded-2xl'>
+      <div class='max-h-[90%] overflow-y-scroll w-full bg-zinc-50 rounded-2xl'>
         <div class='w-full h-60 overflow-hidden rounded-t-2xl relative'>
           <% if @product.image.attached? %>
             <%= image_tag @product.image.variant(:modal) %>
