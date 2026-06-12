@@ -1,5 +1,5 @@
 <% cache "#{@product}_modal" do %>
-  <div class='z-50 fixed inset-0 bg-zinc-800/30 backdrop-blur-sm' data-controller='order-item'>
+  <div class='z-50 fixed inset-0 bg-zinc-800/30 backdrop-blur-sm' data-controller='order-item' data-order-item-delete-value="false">
     <div class='h-screen px-6 flex justify-center items-center' data-action='click->order-item#close'>
       <div class='max-h-[90%] overflow-y-scroll w-full bg-zinc-50 rounded-2xl'>
         <div class='w-full h-60 overflow-hidden rounded-t-2xl relative'>
@@ -29,7 +29,7 @@
                   -
                 </div>
                 <div>
-                  <%= f.number_field :amount, class: 'w-12 bg-zinc-50 border-none text-center', data: { order_item_target: 'amount' } %>
+                  <%= f.number_field :amount, class: 'w-12 bg-zinc-50 border-none text-center', min: 1, data: { action: 'order-item#manual', order_item_target: 'amount' } %>
                 </div>
                 <div class='pl-3 pr-5' data-action='click->order-item#plus'>
                   +

@@ -3,14 +3,20 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="order-items"
 export default class extends Controller {
   static targets = ['sum', 'amount']
+  static values = {
+    delete: String
+  }
 
   connect() {
     this.updateSum(parseInt(this.amountTarget.value))
+    console.log(this.deleteValue)
   }
 
   minus() {
     const amount = parseInt(this.amountTarget.value) - 1
     const orderItemId = this.amountTarget.dataset.orderItemId
+
+    if (this.deleteValue === 'false' && amount < 1) return;
 
     this.amountTarget.value = amount
     this.updateSum(amount)
@@ -39,6 +45,8 @@ export default class extends Controller {
 
     const amount = parseInt(this.amountTarget.value)
     const orderItemId = this.amountTarget.dataset.orderItemId
+
+    if (this.deleteValue === 'false' && amount < 1) return;
 
     this.amountTarget.value = amount
     this.updateSum(amount)
